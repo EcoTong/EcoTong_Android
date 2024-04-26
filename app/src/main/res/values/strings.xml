@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">EcoTong_Android</string>
+    <string name="app_name">EcoTong</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="intro1">Finding trash</string>
+    <string name="intro2">Taking a picture of the material</string>
+    <string name="intro3">Getting recommendations</string>
+    <string name="intro4">Recycling and making a profit</string>
+    <string name="intro5">Join us to save the planet</string>
 </resources>
