@@ -64,14 +64,11 @@
 
     <Button
         android:id="@+id/btnStart"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/greensecondary"
         android:text="Start"
-        android:textColor="@color/greenprimary"
-        android:textSize="18dp"
-        android:textStyle="bold"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"

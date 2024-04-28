@@ -8,9 +8,38 @@
     <style name="Theme.EcoTong_Android" parent="Base.Theme.EcoTong_Android" />
 
     <style name="Big32sp" parent="Base.Theme.EcoTong_Android">
-        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Big32sp.GreenPrimary" parent="Big32sp">
+        <item name="android:textColor">@color/greenprimary</item>
+    </style>
+
+    <style name="Big32sp.GreenSecondary" parent="Big32sp">
+        <item name="android:textColor">@color/greensecondary</item>
+    </style>
+
+    <style name="Medium20sp" parent="Base.Theme.EcoTong_Android">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Medium20sp.GreenPrimary" parent="Medium20sp">
+        <item name="android:textColor">@color/greenprimary</item>
+    </style>
+
+    <style name="bold" parent="Medium20sp">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="btn.GreenSecondary" parent="bold">
+        <item name="android:backgroundTint">@color/greensecondary</item>
+        <item name="android:textColor">@color/greenprimary</item>
+    </style>
+
+    <style name="btn.GreenPrimary" parent="bold">
+        <item name="android:backgroundTint">@color/greenprimary</item>
+        <item name="android:textColor">@color/greensecondary</item>
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">

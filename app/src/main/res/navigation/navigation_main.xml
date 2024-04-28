@@ -8,5 +8,14 @@
         android:id="@+id/welcomeFragment"
         android:name="id.ac.istts.ecotong.ui.welcome.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" />
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_toLoginFragment"
+            app:destination="@id/toLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/toLoginFragment"
+        android:name="id.ac.istts.ecotong.ui.welcome.ToLoginFragment"
+        android:label="fragment_to_login"
+        tools:layout="@layout/fragment_to_login" />
 </navigation>

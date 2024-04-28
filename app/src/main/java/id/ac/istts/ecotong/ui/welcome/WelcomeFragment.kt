@@ -19,7 +19,7 @@ private const val NUM_PAGES = 5
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBinding::inflate) {
     private lateinit var adapter: ScreenSlidePagerAdapter
     private fun toLogin() {
-
+        
     }
 
     override fun setupUI() {
