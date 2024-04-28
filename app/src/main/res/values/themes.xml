@@ -2,13 +2,21 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.EcoTong_Android" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@color/greensecondary</item>
+        <item name="colorPrimary">@color/greenprimary</item>
     </style>
 
     <style name="Theme.EcoTong_Android" parent="Base.Theme.EcoTong_Android" />
+
     <style name="Big32sp" parent="Base.Theme.EcoTong_Android">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/greenprimary</item>
+        <!--        <item name="windowSplashScreenAnimatedIcon">@drawable/icon_inset</item>-->
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/Theme.EcoTong_Android</item>
     </style>
 </resources>

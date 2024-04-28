@@ -74,6 +74,10 @@ dependencies {
     ksp(libs.moshi.kotlin.codegen)
     //Timber
     implementation(libs.timber)
+    //ViewPager Dots
+    implementation(libs.androidx.viewpager2)
+    //ViewPager2
+    implementation(libs.dotsindicator)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
