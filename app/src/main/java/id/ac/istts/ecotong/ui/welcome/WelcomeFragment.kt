@@ -1,6 +1,7 @@
 package id.ac.istts.ecotong.ui.welcome
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -26,6 +27,7 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBind
             adapter = ScreenSlidePagerAdapter(this@WelcomeFragment)
             vpWelcome.adapter = adapter
             dotsIndicator.attachTo(vpWelcome)
+            btnStart
         }
     }
 
@@ -52,8 +54,15 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBind
             vpWelcome.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     when (position) {
-                        4 -> ibNext.isInvisible = true
-                        else -> ibNext.isVisible = true
+                        4 -> {
+                            ibNext.isInvisible = true
+                            dotsIndicator.isInvisible = true
+                            btnStart.isVisible = true
+                        }
+                        else -> {
+                            ibNext.isVisible = true
+                            btnStart.isInvisible = true
+                        }
                     }
                 }
             })
