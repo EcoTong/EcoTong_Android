@@ -1,7 +1,6 @@
 package id.ac.istts.ecotong.ui.welcome
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -17,15 +16,18 @@ import timber.log.Timber
 private const val NUM_PAGES = 5
 
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBinding::inflate) {
-    private lateinit var adapter: ScreenSlidePagerAdapter
+    private lateinit var pagerAdapter: ScreenSlidePagerAdapter
     private fun toLogin() {
-        
+
     }
 
     override fun setupUI() {
         with(binding) {
-            adapter = ScreenSlidePagerAdapter(this@WelcomeFragment)
-            vpWelcome.adapter = adapter
+            pagerAdapter = ScreenSlidePagerAdapter(this@WelcomeFragment)
+            vpWelcome.apply {
+                isUserInputEnabled = false
+                this.adapter = pagerAdapter
+            }
             dotsIndicator.attachTo(vpWelcome)
             btnStart
         }
@@ -59,8 +61,10 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBind
                             dotsIndicator.isInvisible = true
                             btnStart.isVisible = true
                         }
+
                         else -> {
                             ibNext.isVisible = true
+                            dotsIndicator.isVisible = true
                             btnStart.isInvisible = true
                         }
                     }

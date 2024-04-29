@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/greenprimary"
+    android:background="@color/green_primary"
     tools:context=".ui.welcome.WelcomeFragment">
 
     <ImageView
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginBottom="64dp"
-        app:dotsColor="@color/greensecondary"
+        app:dotsColor="@color/green_secondary"
         app:dotsCornerRadius="8dp"
         app:dotsSize="16dp"
         app:dotsSpacing="4dp"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:background="@drawable/next_button"
-        android:backgroundTint="@color/greensecondary"
+        android:backgroundTint="@color/green_secondary"
         android:contentDescription="@string/go_next"
         android:foregroundGravity="center"
         android:padding="16dp"
@@ -64,11 +64,12 @@
 
     <Button
         android:id="@+id/btnStart"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/greensecondary"
-        android:text="Start"
         android:layout_width="350dp"
         android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/green_secondary"
+        android:text="Start"
+        android:textColor="@color/green_primary"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"

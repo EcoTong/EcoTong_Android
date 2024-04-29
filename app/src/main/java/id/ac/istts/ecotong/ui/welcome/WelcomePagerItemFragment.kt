@@ -1,5 +1,6 @@
 package id.ac.istts.ecotong.ui.welcome
 
+import android.view.View
 import androidx.core.content.ContextCompat
 import id.ac.istts.ecotong.R
 import id.ac.istts.ecotong.databinding.FragmentWelcomePagerItemBinding
@@ -48,7 +49,10 @@ class WelcomePagerItemFragment :
                 }
 
                 4 -> {
-                    tvTitle.text = getString(R.string.intro5)
+                    tvTitle.apply {
+                        text = getString(R.string.intro5)
+                        textAlignment = View.TEXT_ALIGNMENT_CENTER
+                    }
                     ivBanner.setImageDrawable(
                         ContextCompat.getDrawable(
                             requireContext(), R.drawable.intro_5
