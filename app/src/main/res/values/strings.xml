@@ -11,10 +11,12 @@
     <string name="slogan">Small Steps, Big Impact</string>
     <string name="welcome_to">Welcome to EcoTong!</string>
     <string name="welcome_back">Welcome back!</string>
-    <string name="asking">Don’t have an account?</string>
+    <string name="asking1">Don’t have an account?</string>
+    <string name="asking2">Have an account?</string>
     <string name="signup">Sign up</string>
-    <string name="login">Log in</string>
-    <string name="google">Log in with Google</string>
+    <string name="login">Login</string>
+    <string name="google1">Sign up with Google</string>
+    <string name="google2">Login with Google</string>
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="name">Name</string>
