@@ -85,7 +85,7 @@
         android:background="@drawable/rounded_et"
         android:ems="10"
         android:hint="@string/password"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
