@@ -20,6 +20,10 @@
         <item name="android:textColor">@color/green_secondary</item>
     </style>
 
+    <style name="Big32sp.Gray" parent="Big32sp">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
     <style name="Medium20sp" parent="Base.Theme.EcoTong_Android">
         <item name="android:textSize">20sp</item>
     </style>
@@ -34,6 +38,18 @@
 
     <style name="Small.GreenPrimary" parent="Small">
         <item name="android:textColor">@color/green_primary</item>
+    </style>
+
+    <style name="Small.Gray" parent="Small">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="Smallest" parent="Base.Theme.EcoTong_Android">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Smallest.Gray" parent="Smallest">
+        <item name="android:textColor">@color/gray</item>
     </style>
 
     <style name="bold" parent="Medium20sp">
