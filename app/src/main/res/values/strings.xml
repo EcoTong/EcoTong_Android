@@ -26,4 +26,8 @@
     <string name="active_quest">Active Quest</string>
     <string name="show_more">Show more</string>
     <string name="posts">Posts</string>
+    <string name="invalid_email_format">Invalid email format</string>
+    <string name="please_fill_out_this_field">Please fill out this field</string>
+    <string name="minimum_password">Password must contains at least 8 characters</string>
+    <string name="confirmation_password_does_not_match">Confirmation password does not match</string>
 </resources>

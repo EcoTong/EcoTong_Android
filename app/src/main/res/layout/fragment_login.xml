@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".ui.auth.LoginFragment">
+    tools:context=".ui.auth.login.LoginFragment">
 
     <View
         android:id="@+id/view"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/etEmail"
         style="@style/Medium20sp"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -93,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -159,7 +159,7 @@
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:gravity="bottom"
+        android:gravity="bottom|center"
         android:orientation="horizontal"
         android:padding="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -172,19 +172,16 @@
             style="@style/Small.GreenPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="24dp"
             android:text="@string/asking1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/tvToSignUp"
             style="@style/Small.GreenPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="8dp"
             android:text="@string/signup"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/textView9"

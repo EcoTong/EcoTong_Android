@@ -70,6 +70,9 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBind
                     }
                 }
             })
+            btnStart.setOnClickListener {
+                findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToToLoginFragment())
+            }
         }
     }
 

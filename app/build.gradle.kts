@@ -17,6 +17,8 @@ android {
         versionCode = 1
         versionName = "1.0"
         buildConfigField("Boolean", "DEBUG", "true")
+        buildConfigField("String", "API_BASE_URL", "\"http://192.168.0.9:3000/\"")
+        TODO("GANTI DENGAN IP MASING MASING")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {

@@ -1,11 +1,6 @@
-package id.ac.istts.ecotong.ui.auth
+package id.ac.istts.ecotong.ui.auth.login
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import id.ac.istts.ecotong.R
+import androidx.navigation.fragment.findNavController
 import id.ac.istts.ecotong.databinding.FragmentLoginBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment
 
@@ -17,10 +12,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
     override fun setupListeners() {
-        TODO("Not yet implemented")
+        with(binding) {
+            tvToSignUp.setOnClickListener {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
+            }
+        }
     }
 
     override fun setupObservers() {
-        TODO("Not yet implemented")
     }
 }
