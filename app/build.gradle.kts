@@ -18,7 +18,7 @@ android {
         versionName = "1.0"
         buildConfigField("Boolean", "DEBUG", "true")
         buildConfigField("String", "API_BASE_URL", "\"http://192.168.0.9:3000/\"")
-        TODO("GANTI DENGAN IP MASING MASING")
+//        TODO("GANTI DENGAN IP MASING MASING")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
@@ -45,6 +45,8 @@ android {
 }
 
 dependencies {
+    implementation("kr.co.prnd:readmore-textview:1.0.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
