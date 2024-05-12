@@ -21,6 +21,7 @@
             android:background="@drawable/rounded_et_filled"
             android:iconifiedByDefault="false"
             android:queryHint="Search by title"
+            android:queryBackground="@null"
             app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
