@@ -84,7 +84,7 @@
         style="@style/Smallest.Gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="185dp"
         android:layout_marginTop="103dp"
         android:text="@string/show_more"
         app:layout_constraintStart_toEndOf="@+id/textView16"
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/notification"
+        android:src="@drawable/notifications"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
