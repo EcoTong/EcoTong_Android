@@ -1,23 +1,22 @@
 package id.ac.istts.ecotong.ui
 
 import android.os.Bundle
-import android.view.MenuItem
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
+import androidx.core.view.updateLayoutParams
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.ac.istts.ecotong.R
 import id.ac.istts.ecotong.databinding.ActivityMainBinding
-import id.ac.istts.ecotong.ui.main.HomeFragment
+import id.ac.istts.ecotong.util.gone
+import id.ac.istts.ecotong.util.visible
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
-    // coba-coba
-    private lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var homeFragment: HomeFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -25,33 +24,56 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // coba-coba
-        homeFragment = HomeFragment()
-        bottomNavigationView = findViewById(R.id.bottom_navigation)
-        supportFragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit();
-        bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.home -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit()
-                    true
+        val navHost =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHost.navController
+        with(binding) {
+            bottomNavigation.setupWithNavController(navController)
+            navController.addOnDestinationChangedListener { controller, destination, arguments ->
+                when (destination.id) {
+                    R.id.loginFragment, R.id.signUpFragment, R.id.welcomeFragment, R.id.toLoginFragment -> {
+                        bottomNavigation.gone()
+                        fragmentContainerView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                            bottomMargin = 0
+                        }
+                    }
+
+                    else -> {
+                        bottomNavigation.visible()
+                        fragmentContainerView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                            bottomMargin = 80
+                        }
+                    }
                 }
-                R.id.search -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit()
-                    true
+            }
+            bottomNavigation.setOnItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.homeFragment -> {
+                        fragmentContainerView.findNavController()
+                            .navigate(R.id.action_global_homeFragment)
+                        true
+                    }
+
+                    R.id.searchFragment -> {
+                        fragmentContainerView.findNavController()
+                            .navigate(R.id.action_global_searchFragment)
+                        true
+                    }
+
+                    R.id.scan -> {
+                        true
+                    }
+
+                    R.id.history -> {
+                        true
+                    }
+
+                    R.id.profile -> {
+                        true
+                    }
+
+                    else -> false
                 }
-                R.id.scan -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit()
-                    true
-                }
-                R.id.history -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit()
-                    true
-                }
-                R.id.profile -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit()
-                    true
-                }
-                else -> false
             }
         }
     }

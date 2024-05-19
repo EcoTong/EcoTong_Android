@@ -16,6 +16,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             tvToSignUp.setOnClickListener {
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
             }
+            btnLogin.setOnClickListener {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+            }
         }
     }
 
