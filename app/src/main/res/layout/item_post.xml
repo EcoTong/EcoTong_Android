@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <kr.co.prnd.readmore.ReadMoreTextView
         android:id="@+id/readMoreTextView"
@@ -22,13 +22,13 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView7"
-        app:shapeAppearanceOverlay="@style/circleImageView"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circleImageView"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -135,7 +135,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="8dp"
         android:text="Oct 30, 2023 at 03:30PM"
         android:textColor="@color/gray"
         android:textSize="12sp"

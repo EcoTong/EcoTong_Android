@@ -1,97 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    tools:context=".ui.welcome.ToLoginFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:context=".ui.welcome.ToLoginFragment">
+        android:layout_marginTop="72dp"
+        android:src="@drawable/logo_ecotong"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="256dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/Big32sp.GreenPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:src="@drawable/logo_ecotong"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/welcome_to" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/Medium20sp.GreenPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="256dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            android:text="@string/slogan"
+            android:textColor="@color/green_primary" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView"
-                style="@style/Big32sp.GreenPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/welcome_to" />
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/btn.GreenPrimary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/login"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/Medium20sp.GreenPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/slogan"
-                android:textColor="@color/green_primary" />
-        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/btnLogin"
-            style="@style/btn.GreenPrimary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/login"
-            app:cornerRadius="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout5"
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/Medium20sp.GreenPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent">
+            android:text="@string/asking1" />
 
-            <TextView
-                android:id="@+id/textView3"
-                style="@style/Medium20sp.GreenPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/asking1" />
+        <TextView
+            android:id="@+id/tvToSignUp"
+            style="@style/Medium20sp.GreenPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/signup"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvToSignUp"
-                style="@style/Medium20sp.GreenPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@string/signup"
-                android:textStyle="bold" />
+    </LinearLayout>
 
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

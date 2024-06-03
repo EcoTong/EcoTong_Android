@@ -60,15 +60,21 @@ class MainActivity : AppCompatActivity() {
                         true
                     }
 
-                    R.id.scan -> {
+                    R.id.scanFragment -> {
+                        fragmentContainerView.findNavController()
+                            .navigate(R.id.action_global_scanFragment)
                         true
                     }
 
-                    R.id.history -> {
+                    R.id.historyFragment -> {
+                        fragmentContainerView.findNavController()
+                            .navigate(R.id.action_global_historyFragment)
                         true
                     }
 
-                    R.id.profile -> {
+                    R.id.profileFragment -> {
+                        fragmentContainerView.findNavController()
+                            .navigate(R.id.action_global_profileFragment)
                         true
                     }
 

@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="id.ac.istts.ecotong.ui.main.HomeFragment"
+        android:name="id.ac.istts.ecotong.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <action
@@ -65,12 +65,38 @@
         app:launchSingleTop="true" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="id.ac.istts.ecotong.ui.main.SearchFragment"
+        android:name="id.ac.istts.ecotong.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <action
         android:id="@+id/action_global_searchFragment"
         app:destination="@id/searchFragment"
-        app:launchSingleTop="true"
-        app:popUpToInclusive="false" />
+        app:launchSingleTop="true" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="id.ac.istts.ecotong.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <action
+        android:id="@+id/action_global_profileFragment"
+        app:destination="@id/profileFragment"
+        app:launchSingleTop="true" />
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="id.ac.istts.ecotong.ui.scan.ScanFragment"
+        android:label="fragment_scan"
+        tools:layout="@layout/fragment_scan" />
+    <action
+        android:id="@+id/action_global_scanFragment"
+        app:destination="@id/scanFragment"
+        app:launchSingleTop="true" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="id.ac.istts.ecotong.ui.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <action
+        android:id="@+id/action_global_historyFragment"
+        app:destination="@id/historyFragment"
+        app:launchSingleTop="true" />
 </navigation>

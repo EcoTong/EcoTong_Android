@@ -1,4 +1,4 @@
-package id.ac.istts.ecotong.ui.main
+package id.ac.istts.ecotong.ui.search
 
 import id.ac.istts.ecotong.databinding.FragmentSearchBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment

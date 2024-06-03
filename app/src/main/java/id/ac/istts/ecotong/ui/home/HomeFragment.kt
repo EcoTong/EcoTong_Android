@@ -1,4 +1,4 @@
-package id.ac.istts.ecotong.ui.main
+package id.ac.istts.ecotong.ui.home
 
 import id.ac.istts.ecotong.databinding.FragmentHomeBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment

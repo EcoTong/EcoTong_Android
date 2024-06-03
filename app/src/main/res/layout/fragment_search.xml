@@ -5,33 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    tools:context=".ui.main.SearchFragment">
+    tools:context=".ui.search.SearchFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout5"
+    <SearchView
+        android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <SearchView
-            android:id="@+id/search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_et_filled"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search by title"
-            android:queryBackground="@null"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </LinearLayout>
+        android:background="@drawable/rounded_et_filled"
+        android:iconifiedByDefault="false"
+        android:queryBackground="@null"
+        android:queryHint="Search by title"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView19"
         style="@style/Small.GreenPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="No post(s) result found."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -40,20 +31,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
-        android:layout_width="40dp"
+        android:layout_width="0dp"
         android:layout_height="25dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+        app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="377dp"
-        android:layout_height="607dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

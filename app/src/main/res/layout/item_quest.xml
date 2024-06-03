@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="200dp">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="275dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    app:cardBackgroundColor="@color/green_primary"
+    app:cardCornerRadius="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_item"
+            android:layout_width="80dp"
+
+            android:layout_height="125dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
+            app:srcCompat="@drawable/dummy" />
+
+        <TextView
+            android:id="@+id/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:singleLine="true"
+            android:text="Flower Pot"
+            android:textColor="@color/green_secondary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/iv_item"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:text="Transform your plastic bottle into a beautiful flower pot and give it a new life! Follow the steps below to complete this..."
+            android:textColor="@color/green_secondary"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_complete_now"
+            app:layout_constraintEnd_toEndOf="@+id/tv_item"
+            app:layout_constraintStart_toStartOf="@+id/tv_item"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item" />
+
+        <TextView
+            android:id="@+id/tv_complete_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Complete Now"
+            android:textColor="@color/green_secondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
