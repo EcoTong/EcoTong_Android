@@ -82,6 +82,10 @@ dependencies {
     implementation(libs.androidx.viewpager2)
     //ViewPager2
     implementation(libs.dotsindicator)
+    //CameraX
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.camera.view)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

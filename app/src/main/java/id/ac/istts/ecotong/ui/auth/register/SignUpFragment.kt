@@ -11,7 +11,6 @@ import id.ac.istts.ecotong.ui.base.BaseFragment
 import id.ac.istts.ecotong.util.invisible
 import id.ac.istts.ecotong.util.toastLong
 import id.ac.istts.ecotong.util.visible
-import timber.log.Timber
 
 @AndroidEntryPoint
 class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::inflate) {
@@ -25,9 +24,6 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding
         with(binding) {
             tvToLogin.setOnClickListener {
                 findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
-            }
-            btnRegister.setOnClickListener {
-
             }
             etEmail.doOnTextChanged { text, _, _, _ ->
                 if (text.isNullOrEmpty()) {
