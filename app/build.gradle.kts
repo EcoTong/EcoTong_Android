@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -5,7 +8,9 @@ plugins {
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
-
+val localProperties = Properties().apply {
+    load(FileInputStream(rootProject.file("local.properties")))
+}
 android {
     namespace = "id.ac.istts.ecotong"
     compileSdk = 34
@@ -16,9 +21,13 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("Boolean", "DEBUG", "true")
         buildConfigField("String", "API_BASE_URL", "\"http://192.168.0.9:3000/\"")
 //        TODO("GANTI DENGAN IP MASING MASING")
+        buildConfigField(
+            "String",
+            "SERVER_CLIENT_ID",
+            "\"${localProperties.getProperty("SERVER_CLIENT_ID")}\""
+        )
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
@@ -45,7 +54,7 @@ android {
 }
 
 dependencies {
-    implementation("kr.co.prnd:readmore-textview:1.0.0")
+    implementation(libs.readmore.textview)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -86,7 +95,10 @@ dependencies {
     implementation(libs.androidx.camera.camera2)
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
-
+    //Credentials Manager
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
