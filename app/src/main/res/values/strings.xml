@@ -31,4 +31,6 @@
     <string name="minimum_password">Password must contains at least 8 characters</string>
     <string name="confirmation_password_does_not_match">Confirmation password does not match</string>
     <string name="hi_user">Hi, %1$s!</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="start">Start</string>
 </resources>

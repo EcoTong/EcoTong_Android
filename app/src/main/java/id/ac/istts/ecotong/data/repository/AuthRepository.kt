@@ -1,13 +1,17 @@
 package id.ac.istts.ecotong.data.repository
 
 import androidx.lifecycle.LiveData
-import id.ac.istts.ecotong.data.remote.response.User
 
 interface AuthRepository {
     suspend fun register(
-        username: String,
+        username: String, email: String, password: String, name: String
+    ): LiveData<State<String>>
+
+    suspend fun login(
         email: String,
         password: String,
-        name: String
-    ): LiveData<State<User?>>
+    ): LiveData<State<String>>
+
+    suspend fun oAuthGoogle(idToken: String): LiveData<State<String>>
+    suspend fun checkToken() : LiveData<State<String>>
 }
