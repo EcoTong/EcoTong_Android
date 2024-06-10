@@ -53,7 +53,9 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
             btnBack.setOnClickListener {
                 requireActivity().supportFragmentManager.popBackStack()
             }
-            
+            btnCapture.setOnClickListener {
+
+            }
         }
     }
 

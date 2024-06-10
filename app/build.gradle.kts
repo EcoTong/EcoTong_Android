@@ -24,6 +24,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        mlModelBinding = true
     }
 
     buildTypes {
@@ -62,6 +63,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.tensorflow.lite.gpu)
     ksp(libs.androidx.room.compiler)
     //Dagger Hilt
     ksp(libs.hilt.android.compiler)
@@ -86,6 +88,10 @@ dependencies {
     implementation(libs.androidx.camera.camera2)
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
+    //Tensorflow
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-metadata:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
