@@ -5,24 +5,29 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import dagger.hilt.android.AndroidEntryPoint
+import id.ac.istts.ecotong.data.repository.State
 import id.ac.istts.ecotong.databinding.FragmentWelcomeBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment
+import id.ac.istts.ecotong.util.invisible
+import id.ac.istts.ecotong.util.visible
 import timber.log.Timber
 
 
 private const val NUM_PAGES = 5
 
+@AndroidEntryPoint
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBinding::inflate) {
     private lateinit var pagerAdapter: ScreenSlidePagerAdapter
-    private fun toLogin() {
-
-    }
+    private val viewModel: WelcomeViewModel by viewModels()
 
     override fun setupUI() {
         with(binding) {
+            viewModel.checkToken()
             pagerAdapter = ScreenSlidePagerAdapter(this@WelcomeFragment)
             vpWelcome.apply {
                 isUserInputEnabled = false
@@ -76,7 +81,29 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBind
         }
     }
 
-    override fun setupObservers() {}
+    override fun setupObservers() {
+        with(binding) {
+            viewModel.checkTokenResponse.observe(viewLifecycleOwner) {
+                when (it) {
+                    is State.Error, State.Empty -> {
+                        progressBar.invisible()
+                        layoutBoarding.visible()
+                    }
+
+                    State.Loading -> {
+                        layoutBoarding.invisible()
+                        progressBar.visible()
+                    }
+
+                    is State.Success -> {
+                        progressBar.invisible()
+                        findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToHomeFragment())
+                    }
+                }
+            }
+        }
+    }
+
     private inner class ScreenSlidePagerAdapter(fragment: Fragment) :
         FragmentStateAdapter(fragment) {
         override fun getItemCount(): Int = NUM_PAGES
@@ -86,7 +113,6 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBind
                 putInt(WelcomePagerItemFragment.ARG_POSITION, position)
             }
             return fragment
-
         }
     }
 }

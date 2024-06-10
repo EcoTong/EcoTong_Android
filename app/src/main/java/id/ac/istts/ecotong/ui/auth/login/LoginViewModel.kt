@@ -1,4 +1,4 @@
-package id.ac.istts.ecotong.ui.auth.register
+package id.ac.istts.ecotong.ui.auth.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,19 +12,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpViewModel @Inject constructor(private val authRepository: AuthRepository) :
+class LoginViewModel @Inject constructor(private val authRepository: AuthRepository) :
     ViewModel() {
-    private val _registerResponse = MutableLiveData<State<String>>()
-    val registerResponse = _registerResponse as LiveData<State<String>>
     private val _oAuthResponse = MutableLiveData<State<String>>()
     val oAuthResponse = _oAuthResponse as LiveData<State<String>>
-    fun register(username: String, name: String, password: String, email: String) {
-        viewModelScope.launch {
-            authRepository.register(username, email, password, name).asFlow().collect {
-                _registerResponse.postValue(it)
-            }
-        }
-    }
+    private val _loginResponse = MutableLiveData<State<String>>()
+    val loginResponse = _loginResponse as LiveData<State<String>>
 
     fun oAuthGoogle(idToken: String) {
         viewModelScope.launch {
@@ -34,4 +27,11 @@ class SignUpViewModel @Inject constructor(private val authRepository: AuthReposi
         }
     }
 
+    fun login(email: String, password: String) {
+        viewModelScope.launch {
+            authRepository.login(email, password).asFlow().collect {
+                _loginResponse.postValue(it)
+            }
+        }
+    }
 }
