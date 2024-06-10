@@ -33,6 +33,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        mlModelBinding = true
     }
 
     buildTypes {
@@ -55,7 +56,6 @@ android {
 
 dependencies {
     implementation(libs.readmore.textview)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.tensorflow.lite.gpu)
     ksp(libs.androidx.room.compiler)
     //Dagger Hilt
     ksp(libs.hilt.android.compiler)
@@ -101,6 +102,10 @@ dependencies {
     implementation(libs.googleid)
     //Data Store
     implementation(libs.androidx.datastore.preferences)
+    //Tensorflow
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-metadata:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
