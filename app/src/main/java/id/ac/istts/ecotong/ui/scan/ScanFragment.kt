@@ -10,6 +10,7 @@ import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.Preview
+import androidx.camera.core.TorchState
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import id.ac.istts.ecotong.databinding.FragmentScanBinding
@@ -45,7 +46,15 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
     }
 
     override fun setupListeners() {
-
+        with(binding) {
+            btnFlash.setOnClickListener {
+                toggleFlash()
+            }
+            btnBack.setOnClickListener {
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+            
+        }
     }
 
 
@@ -93,12 +102,26 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
         with(binding) {
             if (b){
                 layoutAccepted.gone()
-                layoutDenied.visible()
+//                layoutDenied.visible()
             }else{
-                layoutDenied.gone()
+//                layoutDenied.gone()
                 layoutAccepted.visible()
             }
         }
+    }
+
+    private fun toggleFlash() {
+        val cameraControl = camera?.cameraControl
+        val currentFlashMode = camera?.cameraInfo?.torchState?.value
+
+        // Mengubah status flash
+        val newFlashMode = when (currentFlashMode) {
+            TorchState.ON -> TorchState.OFF
+            else -> TorchState.ON
+        }
+
+        // Menyetel mode flash baru
+        cameraControl?.enableTorch(newFlashMode == TorchState.ON)
     }
 
     companion object {
