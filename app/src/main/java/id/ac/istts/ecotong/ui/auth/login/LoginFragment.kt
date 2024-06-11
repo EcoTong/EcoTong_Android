@@ -92,7 +92,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                         withContext(Dispatchers.Main) {
                             loadingOauth.invisible()
                             btnLoginGoogle.visible()
-                            Timber.e("MainActivity", "GetCredentialException", e)
+                            Timber.e(e.message)
                         }
                     }
                 }

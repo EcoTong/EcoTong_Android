@@ -123,7 +123,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding
                         withContext(Dispatchers.Main) {
                             loadingOauth.invisible()
                             btnRegisterGoogle.visible()
-                            Timber.e("MainActivity", "GetCredentialException", e)
+                            Timber.e(e.message)
                         }
                     }
                 }
