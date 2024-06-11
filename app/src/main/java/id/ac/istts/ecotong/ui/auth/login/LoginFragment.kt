@@ -23,6 +23,7 @@ import id.ac.istts.ecotong.util.visible
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -88,9 +89,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                         val result = credentialManager.getCredential(requireContext(), request)
                         handleSignIn(result)
                     } catch (e: GetCredentialException) {
-                        loadingOauth.invisible()
-                        btnLoginGoogle.visible()
-                        Timber.e("MainActivity", "GetCredentialException", e)
+                        withContext(Dispatchers.Main) {
+                            loadingOauth.invisible()
+                            btnLoginGoogle.visible()
+                            Timber.e("MainActivity", "GetCredentialException", e)
+                        }
                     }
                 }
 
@@ -124,6 +127,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                         loadingLogin.invisible()
                         btnLogin.visible()
                     }
+
                     is State.Error -> {
                         loadingLogin.invisible()
                         btnLogin.visible()
