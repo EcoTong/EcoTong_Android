@@ -76,7 +76,8 @@
             style="@style/Medium20sp.GreenPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/asking1" />
+            android:text="@string/asking1"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvToSignUp"
@@ -85,6 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@string/signup"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>

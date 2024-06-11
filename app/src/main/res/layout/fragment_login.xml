@@ -170,6 +170,7 @@
         android:gravity="center"
         android:text="@string/login_with_google"
         android:textColor="?android:colorPrimary"
+        android:textSize="16sp"
         app:backgroundTint="@color/transparent"
         app:cornerRadius="12dp"
         app:icon="@drawable/logo_google"
