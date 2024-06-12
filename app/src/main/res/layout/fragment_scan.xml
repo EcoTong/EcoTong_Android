@@ -42,8 +42,8 @@
 
     <ImageButton
         android:id="@+id/btn_flash"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_margin="16dp"
         android:background="@null"
         android:scaleType="fitXY"
