@@ -7,7 +7,11 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.ac.istts.ecotong.BuildConfig
+import id.ac.istts.ecotong.data.local.datastore.DataStoreManager
 import id.ac.istts.ecotong.data.remote.service.EcotongApiService
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,25 +21,23 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(dataStoreManager: DataStoreManager): OkHttpClient {
         val loggingInterceptor = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         } else {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
         }
-//        val token = runBlocking { dataStoreManager.storyJwtToken.first() }
-//        if (token.isNullOrEmpty()) {
-//            return OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
-//        }
-//        val authInterceptor = Interceptor { chain ->
-//            val req = chain.request()
-//            val requestHeaders =
-//                req.newBuilder().addHeader("Authorization", "Bearer $token").build()
-//            chain.proceed(requestHeaders)
-//        }
-//        return OkHttpClient.Builder().addInterceptor(loggingInterceptor)
-//            .addInterceptor(authInterceptor).build()
-        return OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
+        val token = runBlocking { dataStoreManager.ecotongJwtToken.first() }
+        if (token.isNullOrEmpty()) {
+            return OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
+        }
+        val authInterceptor = Interceptor { chain ->
+            val req = chain.request()
+            val requestHeaders = req.newBuilder().addHeader("authorization", token).build()
+            chain.proceed(requestHeaders)
+        }
+        return OkHttpClient.Builder().addInterceptor(loggingInterceptor)
+            .addInterceptor(authInterceptor).build()
     }
 
     @Provides
