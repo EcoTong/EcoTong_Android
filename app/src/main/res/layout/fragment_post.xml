@@ -21,7 +21,7 @@
         app:menu="@menu/post_menu"
         app:navigationIcon="@drawable/cross_primary"
         app:title="Create a Post"
-        app:titleTextAppearance="@style/Small.GreenPrimary" />
+        app:titleTextAppearance="@style/Small.GreenPrimary.Bold" />
 
     <ScrollView
         android:layout_width="0dp"

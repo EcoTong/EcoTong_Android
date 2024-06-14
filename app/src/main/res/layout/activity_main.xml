@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         app:backgroundTint="@color/green_secondary"
         app:elevation="8dp"
+        app:itemTextAppearanceActive="@android:style/TextAppearance.DeviceDefault.Medium"
         app:itemActiveIndicatorStyle="@style/Theme.EcoTong_Android"
         app:itemIconTint="@color/green_primary"
         app:itemTextColor="@color/green_primary"

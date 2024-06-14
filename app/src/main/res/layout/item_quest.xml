@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="275dp"
+    android:layout_width="280dp"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     app:cardBackgroundColor="@color/green_primary"
@@ -15,7 +15,7 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_item"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
 
             android:layout_height="125dp"
             android:adjustViewBounds="true"
@@ -44,11 +44,11 @@
             android:id="@+id/textView14"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="2dp"
             android:ellipsize="end"
             android:maxLines="4"
             android:text="Transform your plastic bottle into a beautiful flower pot and give it a new life! Follow the steps below to complete this..."
-            android:textColor="@color/green_secondary"
+            android:textColor="@color/gray"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_complete_now"
             app:layout_constraintEnd_toEndOf="@+id/tv_item"
@@ -59,9 +59,11 @@
             android:id="@+id/tv_complete_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="2dp"
             android:text="Complete Now"
             android:textColor="@color/green_secondary"
+            android:textSize="12sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

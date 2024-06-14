@@ -53,6 +53,10 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="Small.GreenPrimary.Bold" parent="Small.GreenPrimary">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="Small.Gray" parent="Small">
         <item name="android:textColor">@color/gray</item>
     </style>
@@ -94,5 +98,10 @@
     <style name="circleImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ToolbarMenuStyle" parent="">
+        <item name="itemIconTint">@color/brown</item>
+        <item name="itemTextColor">@color/brown</item>
     </style>
 </resources>
