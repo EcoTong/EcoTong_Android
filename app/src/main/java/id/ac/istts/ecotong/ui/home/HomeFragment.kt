@@ -1,5 +1,6 @@
 package id.ac.istts.ecotong.ui.home
 
+import androidx.navigation.fragment.findNavController
 import id.ac.istts.ecotong.databinding.FragmentHomeBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment
 
@@ -11,6 +12,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     override fun setupListeners() {
+        with(binding){
+            fabPost.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostFragment())
+            }
+        }
     }
 
     override fun setupObservers() {

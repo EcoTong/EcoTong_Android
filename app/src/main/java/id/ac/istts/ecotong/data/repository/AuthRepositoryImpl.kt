@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import id.ac.istts.ecotong.data.local.datastore.DataStoreManager
 import id.ac.istts.ecotong.data.remote.service.EcotongApiService
+import id.ac.istts.ecotong.util.handleError
 import kotlinx.coroutines.flow.first
+import retrofit2.HttpException
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -26,7 +28,10 @@ class AuthRepositoryImpl @Inject constructor(
                 emit(State.Error(response.message ?: ""))
             }
         } catch (e: Exception) {
-            emit(State.Error(e.message.toString()))
+            when (e) {
+                is HttpException -> emit(State.Error(e.handleError()))
+                else -> emit(State.Error("Unexpected error"))
+            }
         }
     }
 
@@ -42,7 +47,10 @@ class AuthRepositoryImpl @Inject constructor(
                     emit(State.Error(response.message ?: ""))
                 }
             } catch (e: Exception) {
-                emit(State.Error(e.message.toString()))
+                when (e) {
+                    is HttpException -> emit(State.Error(e.handleError()))
+                    else -> emit(State.Error("Unexpected error"))
+                }
             }
         }
 

@@ -1,16 +1,14 @@
 package id.ac.istts.ecotong.ui.scan
 
 import android.Manifest
-import android.os.Handler
-import android.os.Looper
-import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.icu.text.NumberFormat
-import android.util.Log
-import android.view.MotionEvent
+import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.view.ScaleGestureDetector
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -30,9 +28,8 @@ import id.ac.istts.ecotong.ui.base.BaseFragment
 import id.ac.istts.ecotong.util.gone
 import id.ac.istts.ecotong.util.visible
 import org.tensorflow.lite.task.vision.classifier.Classifications
+import timber.log.Timber
 import java.io.File
-import java.nio.file.Files.createFile
-import kotlin.io.path.absolutePathString
 
 class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::inflate) {
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
@@ -119,11 +116,11 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
 
     private fun setDisableCamera(b: Boolean) {
         with(binding) {
-            if (b){
+            if (b) {
                 layoutAccepted.gone()
-//                layoutDenied.visible()
-            }else{
-//                layoutDenied.gone()
+                layoutDenied.visible()
+            } else {
+                layoutDenied.gone()
                 layoutAccepted.visible()
             }
         }
@@ -151,24 +148,41 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
     }
 
     private fun capturePhoto() {
-        imageCapture.takePicture(outputFileOptions, cameraExecutor,
+        val photoFile = createCustomTempFile(requireContext())
+        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+        imageCapture?.takePicture(outputOptions,
+            ContextCompat.getMainExecutor(requireActivity()),
             object : ImageCapture.OnImageSavedCallback {
-                override fun onError(error: ImageCaptureException) {
-                    Log.e("ScanFragment", "Photo capture failed: ${exc.message}", exc)
+                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                    classifyImage(output.savedUri!!)
                 }
 
-                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val savedUri = output.savedUri ?: return
-                    val bitmap = BitmapFactory.decodeFile(photoFile.absolutePathString())
-                    classifyImage(bitmap)
+                override fun onError(exc: ImageCaptureException) {
+//                    Toast.makeText(
+//                        this@CameraActivity,
+//                        "Gagal mengambil gambar.",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+                    Timber.e("onError: ${exc.message}")
                 }
-            }
-        )
+            })
+//        imageCapture?.takePicture(outputFileOptions, cameraExecutor,
+//            object : ImageCapture.OnImageSavedCallback {
+//                override fun onError(error: ImageCaptureException) {
+//                    Log.e("ScanFragment", "Photo capture failed: ${exc.message}", exc)
+//                }
+//
+//                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+//                    val savedUri = output.savedUri ?: return
+//                    val bitmap = BitmapFactory.decodeFile(photoFile.absolutePathString())
+//                    classifyImage(bitmap)
+//                }
+//            }
+//        )
     }
 
-    private fun classifyImage(bitmap: Bitmap) {
-        imageClassifierHelper = ImageClassifierHelper(
-            context = requireContext(),
+    private fun classifyImage(uri: Uri) {
+        ImageClassifierHelper(context = requireContext(),
             classifierListener = object : ImageClassifierHelper.ClassifierListener {
                 override fun onError(error: String) {
                     Handler(Looper.getMainLooper()).post {
@@ -177,15 +191,16 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
                 }
 
                 override fun onResults(
-                    results: List<Classifications>?,
-                    inferenceTime: Long
+                    results: List<Classifications>?, inferenceTime: Long
                 ) {
                     Handler(Looper.getMainLooper()).post {
                         results?.let {
                             if (it.isNotEmpty() && it[0].categories.isNotEmpty()) {
-                                val sortedCategories = it[0].categories.sortedByDescending { it.score }
+                                val sortedCategories =
+                                    it[0].categories.sortedByDescending { it.score }
                                 val displayResult = sortedCategories.joinToString("\n") {
-                                    "${it.label} " + NumberFormat.getPercentInstance().format(it.score).trim()
+                                    "${it.label} " + NumberFormat.getPercentInstance()
+                                        .format(it.score).trim()
                                 }
                                 showResultsPopup(displayResult, "$inferenceTime ms")
                             } else {
@@ -194,9 +209,8 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
                         }
                     }
                 }
-            }
-        )
-        imageClassifierHelper.classify(bitmap)
+            }).classifyStaticImage(uri)
+//        imageClassifierHelper.classify(bitmap)
     }
 
     private fun showResultsPopup(result: String, inferenceTime: String) {
@@ -207,10 +221,13 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
         builder.show()
     }
 
-    companion object {
-        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
-        private const val FILENAME = "yyyy-MM-dd-HH-mm-ss-SSS"
-        private const val PHOTO_EXTENSION = ".jpg"
+    private fun createCustomTempFile(context: Context): File {
+        val filesDir = context.externalCacheDir// Ensure external cache dir is available
+        val fileName = "temp_scan.jpg" // Specify the desired file name
+        return File(filesDir, fileName)
     }
 
+    companion object {
+        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
+    }
 }

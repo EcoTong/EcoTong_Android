@@ -33,4 +33,10 @@
     <string name="hi_user">Hi, %1$s!</string>
     <string name="login_with_google">Login with Google</string>
     <string name="start">Start</string>
+    <string name="invalid_email_or_password">Invalid email or password</string>
+    <string name="an_unexpected_error_has_occurred">An unexpected error has occurred</string>
+    <string name="email_already_taken">Email already taken</string>
+    <string name="username_already_taken">Username already taken</string>
+    <string name="or">OR</string>
+    <string name="add_a_picture">Add a Picture</string>
 </resources>

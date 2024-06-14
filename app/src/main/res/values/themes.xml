@@ -2,8 +2,11 @@
 
     <style name="Base.Theme.EcoTong_Android" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorSecondary">@color/green_secondary</item>
         <item name="android:windowBackground">@color/background</item>
         <item name="android:textColor">@color/green_primary</item>
+        <item name="actionMenuTextColor">@color/green_primary</item>
+        <item name="actionMenuTextAppearance">@style/Small.GreenPrimary</item>
     </style>
 
     <style name="Theme.EcoTong_Android" parent="Base.Theme.EcoTong_Android" />
@@ -47,6 +50,7 @@
 
     <style name="Small.GreenPrimary" parent="Small">
         <item name="android:textColor">@color/green_primary</item>
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="Small.Gray" parent="Small">

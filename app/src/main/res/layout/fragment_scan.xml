@@ -1,54 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_accepted"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.scan.ScanFragment">
+    android:layout_height="match_parent">
 
-    <androidx.camera.view.PreviewView
-        android:id="@+id/view_finder"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_accepted"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".ui.scan.ScanFragment">
 
-    <Button
-        android:id="@+id/btn_capture"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_margin="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_et_filled"
-        android:backgroundTint="@color/green_primary"
-        android:text="Capture"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/view_finder"
+        <androidx.camera.view.PreviewView
+            android:id="@+id/view_finder"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_capture"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_margin="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_et_filled"
+            android:backgroundTint="@color/green_primary"
+            android:text="Capture"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/view_finder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@null"
+            android:src="@drawable/cross"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_flash"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_margin="16dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/flashlight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_denied"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@null"
-        android:src="@drawable/cross"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/btn_flash"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_margin="16dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        android:src="@drawable/flashlight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Permission for camera is blocked."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

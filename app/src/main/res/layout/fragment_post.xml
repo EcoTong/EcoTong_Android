@@ -1,13 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.post.PostFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_post"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="@color/green_secondary"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingEnd="8dp"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/post_menu"
+        app:navigationIcon="@drawable/cross_primary"
+        app:title="Create a Post"
+        app:titleTextAppearance="@style/Small.GreenPrimary" />
 
-</FrameLayout>
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_post">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_preview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/intro_5"
+                tools:src="@drawable/intro_5" />
+
+            <TextView
+                android:id="@+id/tv_tap_to_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Tap image to change picture"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_preview" />
+
+            <Button
+                android:id="@+id/btn_add_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_a_picture"
+                app:cornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_preview"
+                app:layout_constraintEnd_toEndOf="@+id/iv_preview"
+                app:layout_constraintStart_toStartOf="@+id/iv_preview"
+                app:layout_constraintTop_toTopOf="@+id/iv_preview" />
+
+            <EditText
+                android:id="@+id/editTextText"
+                style="@style/Medium20sp.GreenPrimary"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/rounded_et"
+                android:ems="10"
+                android:hint="Add a title..."
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="8dp"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_tap_to_change" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine"
+                style="@style/Medium20sp.GreenPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/rounded_et"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Add a description..."
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:minLines="8"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

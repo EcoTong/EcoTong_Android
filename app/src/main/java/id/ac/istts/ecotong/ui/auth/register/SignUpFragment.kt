@@ -140,6 +140,27 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding
                     is State.Error -> {
                         loadingRegister.invisible()
                         btnRegister.visible()
+                        when (it.error) {
+                            "Username already exists" -> {
+                                etUsername.apply {
+                                    error =
+                                        getString(R.string.username_already_taken)
+                                    requestFocus()
+                                }
+                            }
+
+                            "Email already exists" -> {
+                                etEmail.apply {
+                                    error = getString(R.string.email_already_taken)
+                                    requestFocus()
+                                }
+
+                            }
+
+                            else -> {
+                                requireActivity().toastLong(getString(R.string.an_unexpected_error_has_occurred))
+                            }
+                        }
                     }
 
                     State.Loading -> {

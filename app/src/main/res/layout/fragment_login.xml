@@ -48,7 +48,7 @@
         android:layout_marginTop="16dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:text="Login"
+        android:text="@string/login"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -62,18 +62,20 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="16dp"
+        android:autofillHints="emailAddress"
         android:background="@drawable/rounded_et"
         android:ems="10"
         android:hint="@string/email"
-        android:inputType="text"
-        android:paddingLeft="8dp"
+        android:inputType="textEmailAddress"
+        android:paddingStart="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:ignore="RtlSymmetry" />
 
     <EditText
         android:id="@+id/et_password"
@@ -82,18 +84,20 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="12dp"
+        android:autofillHints="password"
         android:background="@drawable/rounded_et"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        tools:ignore="RtlSymmetry" />
 
     <LinearLayout
         android:id="@+id/divider"
@@ -118,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:text="OR" />
+            android:text="@string/or" />
 
         <View
             android:layout_width="150dp"
@@ -190,6 +194,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:indeterminateTint="?colorPrimary"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/btn_login_google"
         app:layout_constraintEnd_toEndOf="@+id/btn_login_google"
@@ -202,6 +207,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
+        android:indeterminateTint="?colorPrimary"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="@+id/btnLogin"

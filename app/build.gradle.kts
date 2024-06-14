@@ -21,7 +21,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "API_BASE_URL", "\"http://10.10.3.153:3000/\"")
+        buildConfigField("String", "API_BASE_URL", "\"http://192.168.0.11:3000/\"")
 //        TODO("GANTI DENGAN IP MASING MASING")
         buildConfigField(
             "String",

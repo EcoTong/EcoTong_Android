@@ -57,7 +57,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 }
             }
             btnLogin.setOnClickListener {
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
                 val inputFields = listOf(etEmail, etPassword)
                 inputFields.forEach {
                     if (it.text.isEmpty()) {
@@ -74,7 +73,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     email = etEmail.text.toString(),
                     password = etPassword.text.toString()
                 )
-//                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
             }
             btnLoginGoogle.setOnClickListener {
                 val googleIdOption: GetGoogleIdOption =
@@ -106,7 +104,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         with(binding) {
             viewModel.oAuthResponse.observe(viewLifecycleOwner) {
                 when (it) {
-                    State.Empty, is State.Error -> {
+                    State.Empty -> {}
+                    is State.Error -> {
                         loadingOauth.invisible()
                         btnLoginGoogle.visible()
                     }
@@ -132,8 +131,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     is State.Error -> {
                         loadingLogin.invisible()
                         btnLogin.visible()
-                        //TODO("TES LAGI SETELAH API DIPERBAIKI")
                         requireActivity().toastLong(it.error)
+                        when (it.error) {
+                            "Account Not Found", "Wrong Password" -> {
+                                requireActivity().toastLong(getString(R.string.invalid_email_or_password))
+                            }
+
+                            else -> {
+                                requireActivity().toastLong(getString(R.string.an_unexpected_error_has_occurred))
+                            }
+                        }
                     }
 
                     State.Loading -> {
