@@ -1,10 +1,15 @@
 package id.ac.istts.ecotong.data.remote.service
 
 import id.ac.istts.ecotong.data.remote.response.AuthResponse
+import id.ac.istts.ecotong.data.remote.response.PostResponse
 import id.ac.istts.ecotong.data.remote.response.TokenResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface EcotongApiService {
     @FormUrlEncoded
@@ -28,4 +33,12 @@ interface EcotongApiService {
     suspend fun oAuthGoogle(
         @Field("id_token") idToken: String
     ): TokenResponse
+
+    @Multipart
+    @POST("/api/posts/tambahpost")
+    suspend fun addPost(
+        @Part("title") title: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part fotopost: MultipartBody.Part
+    ): PostResponse
 }

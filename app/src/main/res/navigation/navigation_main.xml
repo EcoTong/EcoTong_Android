@@ -45,6 +45,7 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
             app:popUpTo="@id/toLoginFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -117,5 +118,12 @@
         android:id="@+id/postFragment"
         android:name="id.ac.istts.ecotong.ui.post.PostFragment"
         android:label="fragment_post"
-        tools:layout="@layout/fragment_post" />
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_postFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/postFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
