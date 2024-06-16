@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@null"
-            android:src="@drawable/cross"
+            android:src="@drawable/cross_primary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
