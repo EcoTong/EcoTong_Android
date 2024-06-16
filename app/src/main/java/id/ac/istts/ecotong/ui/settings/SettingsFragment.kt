@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import id.ac.istts.ecotong.R
 
-abstract class SettingsFragment<VB : ViewBinding>(
-    private val inflate: (layoutInflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> VB
+abstract class SettingsFragment<FragmentSettingsBinding : ViewBinding>(
+    private val inflate: (layoutInflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> FragmentSettingsBinding
 ) : Fragment() {
-    private var _binding: VB? = null
+    private var _binding: FragmentSettingsBinding? = null
 
     val binding get() = _binding!!
 

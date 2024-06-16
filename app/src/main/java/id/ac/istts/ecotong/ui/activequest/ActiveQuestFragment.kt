@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import id.ac.istts.ecotong.R
-abstract class ActiveQuestFragment<VB : ViewBinding>(
-    private val inflate: (layoutInflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> VB
+abstract class ActiveQuestFragment<FragmentActiveQuestBinding : ViewBinding>(
+    private val inflate: (layoutInflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> FragmentActiveQuestBinding
 ) : Fragment() {
-    private var _binding: VB? = null
+    private var _binding: FragmentActiveQuestBinding? = null
 
     val binding get() = _binding!!
 

@@ -16,6 +16,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             fabPost.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostFragment())
             }
+            tvShowMore.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostFragment())
+            }
         }
     }
 
