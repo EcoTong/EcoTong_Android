@@ -1,40 +1,16 @@
 package id.ac.istts.ecotong.ui.settings
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.viewbinding.ViewBinding
-import id.ac.istts.ecotong.R
+import id.ac.istts.ecotong.databinding.FragmentSettingsBinding
+import id.ac.istts.ecotong.ui.base.BaseFragment
 
-abstract class SettingsFragment<FragmentSettingsBinding : ViewBinding>(
-    private val inflate: (layoutInflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> FragmentSettingsBinding
-) : Fragment() {
-    private var _binding: FragmentSettingsBinding? = null
+class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
+    override fun setupUI() {
 
-    val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        _binding = inflate.invoke(inflater, container, false)
-        return _binding?.root
     }
+    override fun setupListeners() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupUI()
-        setupListeners()
-        setupObservers()
     }
+    override fun setupObservers() {
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
-
-    abstract fun setupUI()
-    abstract fun setupListeners()
-    abstract fun setupObservers()
 }

@@ -17,7 +17,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostFragment())
             }
             tvShowMore.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostFragment())
+                findNavController().navigate(HomeFragmentDirections.actionGlobalActiveQuestFragment())
             }
         }
     }

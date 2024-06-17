@@ -126,4 +126,9 @@
             app:popUpTo="@id/postFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/activeQuestFragment"
+        android:name="id.ac.istts.ecotong.ui.activequest.ActiveQuestFragment"
+        android:label="fragment_active_quest"
+        tools:layout="@layout/fragment_active_quest" /><action android:id="@+id/action_global_activeQuestFragment" app:destination="@id/activeQuestFragment"/>
 </navigation>
