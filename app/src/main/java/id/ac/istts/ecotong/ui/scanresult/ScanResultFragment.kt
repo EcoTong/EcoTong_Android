@@ -1,4 +1,4 @@
-package id.ac.istts.ecotong.ui.detailquest
+package id.ac.istts.ecotong.ui.scanresult
 
 import id.ac.istts.ecotong.databinding.FragmentScanResultBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment

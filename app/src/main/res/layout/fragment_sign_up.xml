@@ -186,11 +186,14 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register_google"
+        style="@style/btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="Sign Up with Google"
         android:textColor="?android:colorPrimary"
         android:textSize="16sp"

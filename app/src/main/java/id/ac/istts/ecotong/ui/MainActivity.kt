@@ -48,7 +48,9 @@ class MainActivity : AppCompatActivity() {
             bottomNavigation.setupWithNavController(navController)
             navController.addOnDestinationChangedListener { controller, destination, arguments ->
                 when (destination.id) {
-                    R.id.loginFragment, R.id.signUpFragment, R.id.welcomeFragment, R.id.toLoginFragment, R.id.scanFragment,R.id.postFragment,  R.id.activeQuestFragment -> {
+                    R.id.loginFragment, R.id.signUpFragment, R.id.welcomeFragment, R.id.toLoginFragment,
+                    R.id.scanFragment,R.id.postFragment, R.id.activeQuestFragment,
+                    R.id.settingsFragment, R.id.appInfoFragment -> {
                         bottomNavigation.gone()
                         fragmentContainerView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                             bottomMargin = 0

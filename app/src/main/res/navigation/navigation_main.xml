@@ -130,5 +130,23 @@
         android:id="@+id/activeQuestFragment"
         android:name="id.ac.istts.ecotong.ui.activequest.ActiveQuestFragment"
         android:label="fragment_active_quest"
-        tools:layout="@layout/fragment_active_quest" /><action android:id="@+id/action_global_activeQuestFragment" app:destination="@id/activeQuestFragment"/>
+        tools:layout="@layout/fragment_active_quest" />
+    <action android:id="@+id/action_global_activeQuestFragment" app:destination="@id/activeQuestFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="id.ac.istts.ecotong.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/appInfoFragment"
+        android:name="id.ac.istts.ecotong.ui.settings.AppInfoFragment"
+        android:label="fragment_app_info"
+        tools:layout="@layout/fragment_app_info" />
+    <action android:id="@+id/action_global_settingsFragment" app:destination="@id/settingsFragment" />
+    <action android:id="@+id/action_global_appInfoFragment" app:destination="@id/appInfoFragment" />
+    <fragment
+        android:id="@+id/scanResultFragment"
+        android:name="id.ac.istts.ecotong.ui.scanresult.ScanResultFragment"
+        android:label="fragment_scan_result"
+        tools:layout="@layout/fragment_scan_result" /><action android:id="@+id/action_global_scanResultFragment" app:destination="@id/scanResultFragment"/>
 </navigation>
