@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.ac.istts.ecotong.data.repository.AuthRepository
 import id.ac.istts.ecotong.data.repository.AuthRepositoryImpl
+import id.ac.istts.ecotong.data.repository.MLRepository
+import id.ac.istts.ecotong.data.repository.MLRepositoryImpl
 import id.ac.istts.ecotong.data.repository.PostRepository
 import id.ac.istts.ecotong.data.repository.PostRepositoryImpl
 
@@ -17,4 +19,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindPostRepository(postRepositoryImpl: PostRepositoryImpl): PostRepository
+
+    @Binds
+    abstract fun bindMLRepository(mlRepositoryImpl: MLRepositoryImpl): MLRepository
 }

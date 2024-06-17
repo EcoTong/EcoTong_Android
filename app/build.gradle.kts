@@ -22,6 +22,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         buildConfigField("String", "API_BASE_URL", "\"http://192.168.0.11:3000/\"")
+        buildConfigField("String", "ML_BASE_URL", "\"http://192.168.0.11:4000/\"")
 //        TODO("GANTI DENGAN IP MASING MASING")
         buildConfigField(
             "String",
@@ -33,7 +34,6 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
-        mlModelBinding = true
     }
 
     buildTypes {
@@ -102,11 +102,10 @@ dependencies {
     implementation(libs.googleid)
     //Data Store
     implementation(libs.androidx.datastore.preferences)
-    //Tensorflow
-    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
-    implementation("org.tensorflow:tensorflow-lite-metadata:0.4.4")
-    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
-
+    //MD to HTML
+    implementation(files("./libs/markdown4j-2.2.jar"))
+    //Swipe Refresh
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

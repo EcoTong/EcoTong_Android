@@ -75,41 +75,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-            bottomNavigation.setOnItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.homeFragment -> {
-                        fragmentContainerView.findNavController()
-                            .navigate(R.id.action_global_homeFragment)
-                        true
-                    }
 
-                    R.id.searchFragment -> {
-                        fragmentContainerView.findNavController()
-                            .navigate(R.id.action_global_searchFragment)
-                        true
-                    }
-
-                    R.id.scanFragment -> {
-                        fragmentContainerView.findNavController()
-                            .navigate(R.id.action_global_scanFragment)
-                        true
-                    }
-
-                    R.id.historyFragment -> {
-                        fragmentContainerView.findNavController()
-                            .navigate(R.id.action_global_historyFragment)
-                        true
-                    }
-
-                    R.id.profileFragment -> {
-                        fragmentContainerView.findNavController()
-                            .navigate(R.id.action_global_profileFragment)
-                        true
-                    }
-
-                    else -> false
-                }
-            }
         }
     }
 

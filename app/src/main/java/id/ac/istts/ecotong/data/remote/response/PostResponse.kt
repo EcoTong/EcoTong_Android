@@ -9,11 +9,14 @@ data class PostResponse(
     @Json(name = "data") val data: Post? = null,
     @Json(name = "message") val message: String? = null,
 )
+
 @JsonClass(generateAdapter = true)
 data class Post(
-    @Json(name = "id") val id: String,
-    @Json(name = "username") val username: String,
-    @Json(name = "picture") val picture: String,
+    @Json(name = "createdAt") val createdAt: String,
     @Json(name = "description") val description: String,
-    @Json(name = "title") val title: String
+    @Json(name = "id") val id: String,
+    @Json(name = "title") val title: String,
+    @Json(name = "picture") val picture: String,
+    @Json(name = "username") val username: String,
+    @Json(name = "updatedAt") val updatedAt: String
 )

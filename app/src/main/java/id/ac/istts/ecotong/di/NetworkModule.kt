@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import id.ac.istts.ecotong.BuildConfig
 import id.ac.istts.ecotong.data.local.datastore.DataStoreManager
 import id.ac.istts.ecotong.data.remote.service.EcotongApiService
+import id.ac.istts.ecotong.data.remote.service.EcotongMLService
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
@@ -16,6 +17,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -46,5 +48,13 @@ object NetworkModule {
         return Retrofit.Builder().baseUrl(BuildConfig.API_BASE_URL).client(client)
             .addConverterFactory(MoshiConverterFactory.create(moshi)).build()
             .create(EcotongApiService::class.java)
+    }
+    @Provides
+    @Singleton
+    fun provideEcotongMLApi(client: OkHttpClient): EcotongMLService {
+        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        return Retrofit.Builder().baseUrl(BuildConfig.ML_BASE_URL).client(client)
+            .addConverterFactory(MoshiConverterFactory.create(moshi)).build()
+            .create(EcotongMLService::class.java)
     }
 }

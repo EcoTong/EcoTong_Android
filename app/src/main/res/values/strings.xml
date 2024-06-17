@@ -41,4 +41,6 @@
     <string name="add_a_picture">Add a Picture</string>
     <string name="please_choose_an_image">Please choose an image</string>
     <string name="upload_post_successful">Upload post successful</string>
+    <string name="upload_post">Upload post</string>
+    <string name="unable_to_identify_object">Unable to identify object</string>
 </resources>

@@ -2,6 +2,7 @@ package id.ac.istts.ecotong.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import id.ac.istts.ecotong.data.remote.response.Post
 import id.ac.istts.ecotong.data.remote.service.EcotongApiService
 import id.ac.istts.ecotong.util.handleError
 import okhttp3.MediaType.Companion.toMediaType
@@ -39,6 +40,21 @@ class PostRepositoryImpl @Inject constructor(
                 is HttpException -> emit(State.Error(e.handleError()))
                 else -> emit(State.Error("Unexpected error"))
             }
+        }
+    }
+
+    override suspend fun getPosts(): LiveData<State<List<Post>>> = liveData {
+        emit(State.Loading)
+        try {
+            val response = ecotongApiService.getPosts()
+            if (response.status == "success" && response.data != null) {
+                if (response.data.isEmpty()) emit(State.Empty)
+                emit(State.Success(response.data))
+            } else {
+                emit(State.Error(response.message ?: ""))
+            }
+        } catch (e: Exception) {
+            emit(State.Error(e.message.toString()))
         }
     }
 
