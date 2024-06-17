@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.redeempoints.RedeemPointsFragment" >
+    tools:context=".ui.completedquest.CompletedQuestFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_post"
@@ -19,14 +19,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/arrow_backward"
-        app:title="Redeem Points"
+        app:title="Completed Quests"
         app:titleTextAppearance="@style/Small.GreenPrimary.Bold" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
+        android:layout_width="391dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_post"
-        tools:listitem="@layout/item_redeem" />
+        tools:listitem="@layout/item_history" />
 </androidx.constraintlayout.widget.ConstraintLayout>

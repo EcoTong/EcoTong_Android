@@ -2,6 +2,7 @@ package id.ac.istts.ecotong.ui.detailquest
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import id.ac.istts.ecotong.databinding.FragmentDetailQuestBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment
 
@@ -10,7 +11,9 @@ class DetailQuestFragment: BaseFragment<FragmentDetailQuestBinding>(FragmentDeta
     }
     override fun setupListeners() {
         with(binding) {
-
+            toolbarPost.setNavigationOnClickListener {
+                findNavController().navigateUp()
+            }
         }
     }
     override fun setupObservers() {

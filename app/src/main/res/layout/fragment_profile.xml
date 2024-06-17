@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="@+id/materialCardView3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/go_to_completed_quest"
             android:layout_width="176dp"
             android:layout_height="54dp"
             android:background="@drawable/rounded_et_filled"
@@ -141,6 +142,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView24">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/go_to_redeem"
             android:layout_width="176dp"
             android:layout_height="54dp"
             android:background="@drawable/rounded_et_filled"
@@ -195,11 +197,11 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/textView35"
+        android:id="@+id/posted_posts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@drawable/borderbawah"
+        android:background="@drawable/bottom_border"
         android:paddingBottom="10dp"
         android:text="Post"
         android:textAlignment="center"
@@ -211,7 +213,7 @@
         app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
 
     <TextView
-        android:id="@+id/textView36"
+        android:id="@+id/saved_posts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
@@ -220,17 +222,16 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView35"
-        app:layout_constraintTop_toTopOf="@+id/textView35" />
+        app:layout_constraintStart_toEndOf="@+id/posted_posts"
+        app:layout_constraintTop_toTopOf="@+id/posted_posts" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView35">
+        app:layout_constraintTop_toBottomOf="@+id/posted_posts">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -239,7 +240,6 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

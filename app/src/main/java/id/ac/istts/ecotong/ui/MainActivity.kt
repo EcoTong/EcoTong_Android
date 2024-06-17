@@ -112,4 +112,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun hideBottomNavigation() {
+        with(binding) {
+            bottomNavigation.visibility = View.GONE
+        }
+    }
+
+    fun showBottomNavigation() {
+        with(binding) {
+            bottomNavigation.visibility = View.VISIBLE
+        }
+    }
 }
