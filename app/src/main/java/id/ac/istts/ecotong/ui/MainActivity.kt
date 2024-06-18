@@ -9,7 +9,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,8 +48,8 @@ class MainActivity : AppCompatActivity() {
             navController.addOnDestinationChangedListener { controller, destination, arguments ->
                 when (destination.id) {
                     R.id.loginFragment, R.id.signUpFragment, R.id.welcomeFragment, R.id.toLoginFragment,
-                    R.id.scanFragment,R.id.postFragment, R.id.activeQuestFragment,
-                    R.id.settingsFragment, R.id.appInfoFragment -> {
+                    R.id.scanFragment,R.id.postFragment, R.id.activeQuestFragment, R.id.settingsFragment, R.id.appInfoFragment,
+                    R.id.redeemPointsFragment, R.id.completedQuestFragment -> {
                         bottomNavigation.gone()
                         fragmentContainerView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                             bottomMargin = 0

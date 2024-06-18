@@ -147,11 +147,11 @@
         tools:layout="@layout/fragment_scan_result" />
     <action android:id="@+id/action_global_scanResultFragment" app:destination="@id/scanResultFragment" />
     <fragment
-        android:id="@+id/redeemPointsFragment2"
+        android:id="@+id/redeemPointsFragment"
         android:name="id.ac.istts.ecotong.ui.redeempoints.RedeemPointsFragment"
         android:label="fragment_redeem_points"
         tools:layout="@layout/fragment_redeem_points" />
-    <action android:id="@+id/action_global_redeemPointsFragment2" app:destination="@id/redeemPointsFragment2" />
+    <action android:id="@+id/action_global_redeemPointsFragment2" app:destination="@id/redeemPointsFragment" />
     <fragment
         android:id="@+id/detailQuestFragment"
         android:name="id.ac.istts.ecotong.ui.detailquest.DetailQuestFragment"
