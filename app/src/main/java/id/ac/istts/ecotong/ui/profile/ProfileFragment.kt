@@ -2,9 +2,6 @@ package id.ac.istts.ecotong.ui.profile
 
 import android.animation.ObjectAnimator
 import android.graphics.Typeface
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.StyleSpan
 import androidx.navigation.fragment.findNavController
 import id.ac.istts.ecotong.R
 import id.ac.istts.ecotong.databinding.FragmentProfileBinding
@@ -17,15 +14,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     override fun setupListeners() {
         with(binding) {
             goToSettings.setOnClickListener {
-                findNavController().navigate(ProfileFragmentDirections.actionGlobalSettingsFragment())
+                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToSettingsFragment())
             }
 
             goToRedeem.setOnClickListener {
-                findNavController().navigate(ProfileFragmentDirections.actionGlobalRedeemPointsFragment2())
+                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToRedeemPointsFragment())
             }
 
             goToCompletedQuest.setOnClickListener {
-                findNavController().navigate(ProfileFragmentDirections.actionGlobalCompletedQuestFragment())
+                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToCompletedQuestFragment())
             }
 
             postedPosts.setOnClickListener {

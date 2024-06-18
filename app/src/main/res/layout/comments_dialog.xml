@@ -18,10 +18,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/load_comments"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="?colorPrimary"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/holder" />
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="72dp"
+        android:text="No comments found"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/holder" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_comments"
         android:layout_width="match_parent"
         android:layout_height="550dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

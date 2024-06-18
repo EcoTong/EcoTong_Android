@@ -12,11 +12,40 @@ data class PostResponse(
 
 @JsonClass(generateAdapter = true)
 data class Post(
-    @Json(name = "createdAt") val createdAt: String,
-    @Json(name = "description") val description: String,
-    @Json(name = "id") val id: String,
-    @Json(name = "title") val title: String,
-    @Json(name = "picture") val picture: String,
-    @Json(name = "username") val username: String,
-    @Json(name = "updatedAt") val updatedAt: String
+
+    @Json(name="createdAt")
+    val createdAt: String,
+
+    @Json(name="comments")
+    val comments: Int? = null,
+
+    @Json(name="description")
+    val description: String,
+
+    @Json(name="id")
+    val id: String,
+
+    @Json(name="category")
+    val category: Any? = null,
+
+    @Json(name="title")
+    val title: String,
+
+    @Json(name="picture")
+    val picture: String,
+
+    @Json(name="liked")
+    val liked: Boolean? = null,
+
+    @Json(name="bookmarked")
+    val bookmarked: Boolean? = null,
+
+    @Json(name="username")
+    val username: String,
+
+    @Json(name="updatedAt")
+    val updatedAt: String,
+
+    @Json(name="likes")
+    val likes: Int? = null
 )

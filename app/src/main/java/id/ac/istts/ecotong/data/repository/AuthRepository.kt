@@ -13,5 +13,7 @@ interface AuthRepository {
     ): LiveData<State<String>>
 
     suspend fun oAuthGoogle(idToken: String): LiveData<State<String>>
-    suspend fun checkToken() : LiveData<State<String>>
+    suspend fun checkToken(): LiveData<State<String>>
+
+    suspend fun logout()
 }

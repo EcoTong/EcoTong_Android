@@ -7,7 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.ac.istts.ecotong.BuildConfig
-import id.ac.istts.ecotong.data.local.datastore.DataStoreManager
+import id.ac.istts.ecotong.data.local.datastore.SessionManager
 import id.ac.istts.ecotong.data.remote.service.EcotongApiService
 import id.ac.istts.ecotong.data.remote.service.EcotongMLService
 import kotlinx.coroutines.flow.first
@@ -23,13 +23,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
     @Provides
-    fun provideOkHttpClient(dataStoreManager: DataStoreManager): OkHttpClient {
+    fun provideOkHttpClient(sessionManager: SessionManager): OkHttpClient {
         val loggingInterceptor = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         } else {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
         }
-        val token = runBlocking { dataStoreManager.ecotongJwtToken.first() }
+        val token = runBlocking { sessionManager.ecotongJwtToken.first() }
         if (token.isNullOrEmpty()) {
             return OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
         }

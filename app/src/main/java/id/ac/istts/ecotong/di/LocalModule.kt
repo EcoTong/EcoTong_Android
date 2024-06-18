@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import id.ac.istts.ecotong.data.local.datastore.DataStoreManager
+import id.ac.istts.ecotong.data.local.datastore.SessionManager
 import javax.inject.Singleton
 
 @Module
@@ -14,6 +14,6 @@ import javax.inject.Singleton
 object LocalModule {
     @Singleton
     @Provides
-    fun provideDataStoreManager(@ApplicationContext context: Context): DataStoreManager =
-        DataStoreManager(context)
+    fun provideDataStoreManager(@ApplicationContext context: Context): SessionManager =
+        SessionManager(context)
 }

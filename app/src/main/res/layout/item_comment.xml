@@ -7,7 +7,7 @@
     android:layout_height="65dp">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/iv_author"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
@@ -18,7 +18,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView41"
+        android:id="@+id/tv_author"
         style="@style/Small.GreenPrimary.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,51 +26,27 @@
         android:layout_marginTop="16dp"
         android:text="TextView"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/iv_author"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView44"
+        android:id="@+id/tv_comment_timestamps"
         style="@style/Small.Gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="16dp"
         android:text="Nov 2, 2023"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/textView41"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/tv_author"
+        app:layout_constraintTop_toTopOf="@+id/tv_author" />
 
     <TextView
-        android:id="@+id/textView45"
-        style="@style/Small.Gray"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:text="at"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/textView44"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView46"
-        style="@style/Small.Gray"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:text="03:30PM"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/textView45"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView47"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView41" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_author"
+        app:layout_constraintTop_toBottomOf="@+id/tv_author" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,13 +10,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:textColor="@color/green_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post"
+        app:layout_constraintTop_toBottomOf="@+id/iv_like"
         app:readMoreColor="@color/green_primary"
         app:readMoreMaxLine="4"
         app:readMoreText="…Read More" />
@@ -29,7 +29,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circleImageView"
+        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -39,7 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Ivan Cahyadi Sutanto"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_user"
@@ -61,10 +60,12 @@
 
     <ImageView
         android:id="@+id/iv_like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:adjustViewBounds="false"
+        android:padding="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_post"
         app:srcCompat="@drawable/white_heart" />
@@ -74,42 +75,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
-        android:text="12"
+        android:text="0"
         android:textColor="@color/green_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_like"
         app:layout_constraintStart_toEndOf="@+id/iv_like"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post" />
+        app:layout_constraintTop_toTopOf="@+id/iv_like" />
 
     <ImageView
         android:id="@+id/iv_comments"
-        android:layout_width="23dp"
-        android:layout_height="23dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginStart="78dp"
         android:layout_marginTop="8dp"
+        android:adjustViewBounds="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_post"
-        app:srcCompat="@drawable/comment" />
+        app:srcCompat="@drawable/comment_icon"
+        app:tint="?colorPrimary" />
 
     <TextView
         android:id="@+id/tv_comments_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
-        android:text="3"
+        android:text="0"
         android:textColor="@color/green_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_comments"
         app:layout_constraintStart_toEndOf="@+id/iv_comments"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post" />
+        app:layout_constraintTop_toTopOf="@+id/iv_comments" />
 
     <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/iv_bookmark"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post"
-        app:srcCompat="@drawable/save_icon" />
+        app:layout_constraintTop_toTopOf="@+id/iv_comments"
+        app:srcCompat="@drawable/bookmark_icon"
+        app:tint="?colorPrimary" />
 
     <TextView
         android:id="@+id/tv_timestamps"

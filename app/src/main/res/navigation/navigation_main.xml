@@ -69,47 +69,46 @@
         <action
             android:id="@+id/action_homeFragment_to_postFragment"
             app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_activeQuestFragment"
+            app:destination="@id/activeQuestFragment" />
     </fragment>
-    <action
-        android:id="@+id/action_global_homeFragment"
-        app:destination="@id/homeFragment"
-        app:launchSingleTop="true" />
     <fragment
         android:id="@+id/searchFragment"
         android:name="id.ac.istts.ecotong.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
-    <action
-        android:id="@+id/action_global_searchFragment"
-        app:destination="@id/searchFragment"
-        app:launchSingleTop="true" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="id.ac.istts.ecotong.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
-    <action
-        android:id="@+id/action_global_profileFragment"
-        app:destination="@id/profileFragment"
-        app:launchSingleTop="true" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_completedQuestFragment"
+            app:destination="@id/completedQuestFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/navigation_main"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_redeemPointsFragment"
+            app:destination="@id/redeemPointsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/scanFragment"
         android:name="id.ac.istts.ecotong.ui.scan.ScanFragment"
         android:label="fragment_scan"
-        tools:layout="@layout/fragment_scan" />
-    <action
-        android:id="@+id/action_global_scanFragment"
-        app:destination="@id/scanFragment"
-        app:launchSingleTop="true" />
+        tools:layout="@layout/fragment_scan">
+        <action
+            android:id="@+id/action_scanFragment_to_scanResultFragment"
+            app:destination="@id/scanResultFragment" />
+    </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="id.ac.istts.ecotong.ui.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
-    <action
-        android:id="@+id/action_global_historyFragment"
-        app:destination="@id/historyFragment"
-        app:launchSingleTop="true" />
     <fragment
         android:id="@+id/postFragment"
         android:name="id.ac.istts.ecotong.ui.post.PostFragment"
@@ -126,41 +125,51 @@
         android:id="@+id/activeQuestFragment"
         android:name="id.ac.istts.ecotong.ui.activequest.ActiveQuestFragment"
         android:label="fragment_active_quest"
-        tools:layout="@layout/fragment_active_quest" />
-    <action android:id="@+id/action_global_activeQuestFragment" app:destination="@id/activeQuestFragment" />
+        tools:layout="@layout/fragment_active_quest">
+        <action
+            android:id="@+id/action_activeQuestFragment_to_detailQuestFragment"
+            app:destination="@id/detailQuestFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="id.ac.istts.ecotong.ui.settings.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_appInfoFragment"
+            app:destination="@id/appInfoFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_toLoginFragment"
+            app:destination="@id/toLoginFragment"
+            app:popUpTo="@id/navigation_main"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/appInfoFragment"
         android:name="id.ac.istts.ecotong.ui.settings.AppInfoFragment"
         android:label="fragment_app_info"
         tools:layout="@layout/fragment_app_info" />
-    <action android:id="@+id/action_global_settingsFragment" app:destination="@id/settingsFragment" />
-    <action android:id="@+id/action_global_appInfoFragment" app:destination="@id/appInfoFragment" />
     <fragment
         android:id="@+id/scanResultFragment"
         android:name="id.ac.istts.ecotong.ui.scanresult.ScanResultFragment"
         android:label="fragment_scan_result"
         tools:layout="@layout/fragment_scan_result" />
-    <action android:id="@+id/action_global_scanResultFragment" app:destination="@id/scanResultFragment" />
     <fragment
         android:id="@+id/redeemPointsFragment"
         android:name="id.ac.istts.ecotong.ui.redeempoints.RedeemPointsFragment"
         android:label="fragment_redeem_points"
         tools:layout="@layout/fragment_redeem_points" />
-    <action android:id="@+id/action_global_redeemPointsFragment2" app:destination="@id/redeemPointsFragment" />
+    <action
+        android:id="@+id/action_global_redeemPointsFragment2"
+        app:destination="@id/redeemPointsFragment" />
     <fragment
         android:id="@+id/detailQuestFragment"
         android:name="id.ac.istts.ecotong.ui.detailquest.DetailQuestFragment"
         android:label="fragment_detail_quest"
         tools:layout="@layout/fragment_detail_quest" />
-    <action android:id="@+id/action_global_detailQuestFragment" app:destination="@id/detailQuestFragment" />
     <fragment
         android:id="@+id/completedQuestFragment"
         android:name="id.ac.istts.ecotong.ui.completedquest.CompletedQuestFragment"
         android:label="fragment_completed_quest"
-        tools:layout="@layout/fragment_completed_quest" /><action android:id="@+id/action_global_completedQuestFragment" app:destination="@id/completedQuestFragment"/>
+        tools:layout="@layout/fragment_completed_quest" />
 </navigation>
