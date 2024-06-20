@@ -57,7 +57,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 }
             }
             btnLogin.setOnClickListener {
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
                 val inputFields = listOf(etEmail, etPassword)
                 inputFields.forEach {
                     if (it.text.isEmpty()) {
