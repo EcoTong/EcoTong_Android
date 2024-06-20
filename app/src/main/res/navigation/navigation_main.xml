@@ -153,7 +153,11 @@
         android:id="@+id/scanResultFragment"
         android:name="id.ac.istts.ecotong.ui.scanresult.ScanResultFragment"
         android:label="fragment_scan_result"
-        tools:layout="@layout/fragment_scan_result" />
+        tools:layout="@layout/fragment_scan_result" >
+        <argument
+            android:name="madeFrom"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/redeemPointsFragment"
         android:name="id.ac.istts.ecotong.ui.redeempoints.RedeemPointsFragment"

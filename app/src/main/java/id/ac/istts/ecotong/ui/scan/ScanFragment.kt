@@ -15,6 +15,7 @@ import androidx.camera.core.TorchState
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.common.util.concurrent.ListenableFuture
 import dagger.hilt.android.AndroidEntryPoint
 import id.ac.istts.ecotong.R
@@ -90,22 +91,49 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
                     }
 
                     is State.Success -> {
-                        val predictionMap = it.data.flatMap { prediction ->
-                            listOfNotNull(prediction.metal.let { "metal" to it },
-                                prediction.glass.let { "glass" to it },
-                                prediction.plastic.let { "plastic" to it },
-                                prediction.paper.let { "paper" to it },
-                                prediction.biodegradable.let { "biodegradable" to it },
-                                prediction.cardboard.let { "cardboard" to it })
-                        }.toMap()
+                        val predictionMap = mutableMapOf<String, Float>()
+                        it.data.forEach {
+                            when {
+                                it.glass != null -> {
+                                    predictionMap["glass"] = it.glass
+                                }
+
+                                it.metal != null -> {
+                                    predictionMap["metal"] = it.metal
+                                }
+
+                                it.paper != null -> {
+                                    predictionMap["paper"] = it.paper
+                                }
+
+                                it.plastic != null -> {
+                                    predictionMap["plastic"] = it.plastic
+                                }
+
+                                it.biodegradable != null -> {
+                                    predictionMap["biodegradable"] = it.biodegradable
+                                }
+
+                                it.cardboard != null -> {
+                                    predictionMap["cardboard"] = it.cardboard
+                                }
+                            }
+                        }
                         val sortedPredictions =
                             predictionMap.entries.sortedByDescending { it.value }
                         val topPrediction = sortedPredictions[0]
+                        sortedPredictions.forEach { println("${it.key}: ${it.value}") }
                         Timber.tag("Top Prediction").d(topPrediction.toString())
-                        if (topPrediction.value!! < 0.75) {
+                        if (topPrediction.value < 0.75) {
+                            Timber.d(topPrediction.value.toString())
                             requireActivity().toastLong(getString(R.string.unable_to_identify_object))
                             startCamera()
                         } else {
+                            findNavController().navigate(
+                                ScanFragmentDirections.actionScanFragmentToScanResultFragment(
+                                    topPrediction.key
+                                )
+                            )
 
                         }
                     }

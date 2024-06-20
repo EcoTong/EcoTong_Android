@@ -1,5 +1,6 @@
 package id.ac.istts.ecotong.data.remote.service
 
+import id.ac.istts.ecotong.data.remote.response.AiResponse
 import id.ac.istts.ecotong.data.remote.response.AuthResponse
 import id.ac.istts.ecotong.data.remote.response.DetailPostResponse
 import id.ac.istts.ecotong.data.remote.response.GetPostsResponse
@@ -17,6 +18,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface EcotongApiService {
     @FormUrlEncoded
@@ -83,4 +85,12 @@ interface EcotongApiService {
         @Path("id_post") postId: String,
         @Field("content") content: String,
     )
+
+    @FormUrlEncoded
+    @GET("/ai/generateAi")
+    suspend fun generateAi(
+        @Query("made_from") madeFrom: String,
+        @Query("time1") timeFrom: Int = 1,
+        @Query("time2") timeEnd: Int = 5,
+    ): AiResponse
 }

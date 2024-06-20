@@ -18,4 +18,5 @@ interface PostRepository {
     suspend fun unlikePost(id: String)
     suspend fun bookmarkPost(id: String)
     suspend fun unbookmarkPost(id: String)
+    suspend fun generateAi(madeFrom: String): LiveData<State<String>>
 }

@@ -119,4 +119,16 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun generateAi(madeFrom: String): LiveData<State<String>> = liveData {
+        emit(State.Loading)
+        try {
+            val response = ecotongApiService.generateAi(madeFrom, 1, 5)
+            if (response.status == "success" && response.message != null) {
+                emit(State.Success(response.message))
+            }
+        } catch (e: Exception) {
+            emit(State.Error(e.message.toString()))
+        }
+
+    }
 }
