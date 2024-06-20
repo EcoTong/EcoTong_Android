@@ -1,12 +1,12 @@
 package id.ac.istts.ecotong.ui.home
 
-import android.content.Context
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -16,8 +16,8 @@ import id.ac.istts.ecotong.data.repository.State
 import id.ac.istts.ecotong.databinding.CommentsDialogBinding
 import id.ac.istts.ecotong.databinding.FragmentHomeBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment
-import id.ac.istts.ecotong.ui.home.adapter.ActiveQuestAdapter
 import id.ac.istts.ecotong.ui.home.adapter.CommentAdapter
+import id.ac.istts.ecotong.ui.home.adapter.HeaderAdapter
 import id.ac.istts.ecotong.ui.home.adapter.PostAdapter
 import id.ac.istts.ecotong.util.gone
 import id.ac.istts.ecotong.util.invisible
@@ -29,6 +29,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var postAdapter: PostAdapter
     private lateinit var commentAdapter: CommentAdapter
+    private lateinit var headerAdapter: HeaderAdapter
     private lateinit var commentDialog: BottomSheetDialog
     private var commentViewBinding: CommentsDialogBinding? = null
     override fun initData() {
@@ -45,20 +46,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 ::bookmarkPost,
                 ::unbookmarkPost
             )
+            headerAdapter = HeaderAdapter()
             rvPost.layoutManager = LinearLayoutManager(context)
-            rvPost.adapter = postAdapter
-            val questAdapter = ActiveQuestAdapter()
-            questAdapter.submitList(listOf("A", "B", "C", "D", "E"))
-            rvQuest.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            rvQuest.adapter = questAdapter
-            rvPost.isNestedScrollingEnabled = false
-            mainSv.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-                val contentHeight = mainSv.getChildAt(0).height
-                val scrollViewHeight = mainSv.height
-                val bottomOfScrollView = contentHeight - scrollViewHeight
-                rvPost.isNestedScrollingEnabled = scrollY >= bottomOfScrollView
-            }
+            val concatAdapter = ConcatAdapter(headerAdapter, postAdapter)
+            rvPost.adapter = concatAdapter
             val displayMetrics = DisplayMetrics()
             requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
             val screenHeight = displayMetrics.heightPixels
@@ -86,9 +77,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             fabPost.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostFragment())
             }
-            tvShowMore.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToActiveQuestFragment())
-            }
             swipeRefreshLayout.setOnRefreshListener {
                 viewModel.getPosts()
                 swipeRefreshLayout.isRefreshing = false
@@ -104,8 +92,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     is State.Error -> {}
                     State.Loading -> {}
                     is State.Success -> {
-                        tvUser.text = getString(R.string.hi_user, it.data.name)
-                        points.text = it.data.credits.toString()
+                        headerAdapter.setData(it.data.username, (it.data.credits ?: 0).toString())
                     }
                 }
             }

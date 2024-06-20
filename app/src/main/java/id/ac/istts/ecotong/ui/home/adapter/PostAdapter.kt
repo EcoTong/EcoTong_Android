@@ -143,8 +143,8 @@ class PostAdapter(
                 true
             }
             val circularProgressDrawable = CircularProgressDrawable(root.context)
-            circularProgressDrawable.strokeWidth = 16f
-            circularProgressDrawable.centerRadius = 200f
+            circularProgressDrawable.strokeWidth = 4f
+            circularProgressDrawable.centerRadius = 16f
             circularProgressDrawable.start()
             Glide.with(this.root.context)
                 .load(BuildConfig.API_BASE_URL + "postpictures/" + item.picture).placeholder(

@@ -127,6 +127,8 @@ class ScanFragment : BaseFragment<FragmentScanBinding>(FragmentScanBinding::infl
                         if (topPrediction.value < 0.75) {
                             Timber.d(topPrediction.value.toString())
                             requireActivity().toastLong(getString(R.string.unable_to_identify_object))
+                            loadingCapture.invisible()
+                            btnCapture.visible()
                             startCamera()
                         } else {
                             findNavController().navigate(

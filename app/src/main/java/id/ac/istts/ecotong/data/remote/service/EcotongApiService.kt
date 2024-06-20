@@ -86,11 +86,10 @@ interface EcotongApiService {
         @Field("content") content: String,
     )
 
-    @FormUrlEncoded
-    @GET("/ai/generateAi")
+    @GET("/api/ai/generateAi")
     suspend fun generateAi(
         @Query("made_from") madeFrom: String,
-        @Query("time1") timeFrom: Int = 1,
+        @Query("time1") timeFrom: Int = 3,
         @Query("time2") timeEnd: Int = 5,
     ): AiResponse
 }

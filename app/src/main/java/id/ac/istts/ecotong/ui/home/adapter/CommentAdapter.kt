@@ -2,9 +2,11 @@ package id.ac.istts.ecotong.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import id.ac.istts.ecotong.R
 import id.ac.istts.ecotong.data.remote.response.Comments
 import id.ac.istts.ecotong.databinding.ItemCommentBinding
 import id.ac.istts.ecotong.util.getRelativeTime
@@ -24,6 +26,7 @@ class CommentAdapter :
             tvContent.text = item.content
             tvCommentTimestamps.text = item.createdAt
             tvCommentTimestamps.text = getRelativeTime(item.createdAt)
+            ivAuthor.setImageDrawable(ContextCompat.getDrawable(root.context, R.drawable.account_circle))
         }
     }
 
