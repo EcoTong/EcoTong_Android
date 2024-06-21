@@ -43,9 +43,7 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/toLoginFragment"
-            app:popUpToInclusive="false" />
+ />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -119,7 +117,6 @@
         <action
             android:id="@+id/action_postFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:launchSingleTop="true"
             app:popUpTo="@id/postFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -170,9 +167,6 @@
         android:name="id.ac.istts.ecotong.ui.redeempoints.RedeemPointsFragment"
         android:label="fragment_redeem_points"
         tools:layout="@layout/fragment_redeem_points" />
-    <action
-        android:id="@+id/action_global_redeemPointsFragment2"
-        app:destination="@id/redeemPointsFragment" />
     <fragment
         android:id="@+id/detailQuestFragment"
         android:name="id.ac.istts.ecotong.ui.detailquest.DetailQuestFragment"

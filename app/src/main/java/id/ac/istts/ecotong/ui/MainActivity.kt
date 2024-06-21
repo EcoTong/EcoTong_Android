@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
@@ -58,9 +59,6 @@ class MainActivity : AppCompatActivity() {
 
                     else -> {
                         bottomNavigation.visible()
-                        fragmentContainerView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                            bottomMargin = 80
-                        }
                         bottomNavigation.viewTreeObserver.addOnGlobalLayoutListener(object :
                             ViewTreeObserver.OnGlobalLayoutListener {
                             override fun onGlobalLayout() {
@@ -74,7 +72,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-
         }
     }
 

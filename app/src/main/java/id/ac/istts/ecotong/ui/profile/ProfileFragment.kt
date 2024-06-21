@@ -2,12 +2,21 @@ package id.ac.istts.ecotong.ui.profile
 
 import android.animation.ObjectAnimator
 import android.graphics.Typeface
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import id.ac.istts.ecotong.R
+import id.ac.istts.ecotong.data.repository.State
 import id.ac.istts.ecotong.databinding.FragmentProfileBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment
+import timber.log.Timber
 
+@AndroidEntryPoint
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate) {
+    private val viewModel: ProfileViewModel by viewModels()
+    override fun initData() {
+        viewModel.getProfile()
+    }
     override fun setupUI() {
     }
 
@@ -51,6 +60,21 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     }
 
     override fun setupObservers() {
+        viewModel.profile.observe(viewLifecycleOwner) {
+            when (it) {
+                State.Empty -> {}
+                is State.Error -> {
+                    Timber.e(it.error)
+                }
+                State.Loading -> {}
+                is State.Success -> {
+                    with(binding) {
+                        tvEmail.text = it.data.email
+                        tvUsername.text = it.data.username
+                    }
+                }
+            }
+        }
     }
 
 }
