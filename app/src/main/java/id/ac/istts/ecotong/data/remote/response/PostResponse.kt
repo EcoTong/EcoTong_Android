@@ -1,5 +1,7 @@
 package id.ac.istts.ecotong.data.remote.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -10,42 +12,41 @@ data class PostResponse(
     @Json(name = "message") val message: String? = null,
 )
 
+@Entity(tableName = "posts")
 @JsonClass(generateAdapter = true)
 data class Post(
 
-    @Json(name="createdAt")
+    @Json(name = "createdAt")
     val createdAt: String,
 
-    @Json(name="comments")
+    @Json(name = "comments")
     val comments: Int? = null,
 
-    @Json(name="description")
+    @Json(name = "description")
     val description: String,
 
-    @Json(name="id")
+    @PrimaryKey
+    @Json(name = "id")
     val id: String,
 
-    @Json(name="category")
-    val category: Any? = null,
-
-    @Json(name="title")
+    @Json(name = "title")
     val title: String,
 
-    @Json(name="picture")
+    @Json(name = "picture")
     val picture: String,
 
-    @Json(name="liked")
+    @Json(name = "liked")
     val liked: Boolean? = null,
 
-    @Json(name="bookmarked")
+    @Json(name = "bookmarked")
     val bookmarked: Boolean? = null,
 
-    @Json(name="username")
+    @Json(name = "username")
     val username: String,
 
-    @Json(name="updatedAt")
+    @Json(name = "updatedAt")
     val updatedAt: String,
 
-    @Json(name="likes")
+    @Json(name = "likes")
     val likes: Int? = null
 )

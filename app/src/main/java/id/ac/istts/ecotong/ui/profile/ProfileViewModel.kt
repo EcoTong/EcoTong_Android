@@ -10,16 +10,29 @@ import id.ac.istts.ecotong.data.remote.response.User
 import id.ac.istts.ecotong.data.repository.State
 import id.ac.istts.ecotong.data.repository.UserRepository
 import kotlinx.coroutines.launch
+import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
+class ProfileViewModel @Inject constructor(private val userRepository: UserRepository) :
+    ViewModel() {
     private val _profile = MutableLiveData<State<User>>()
     val profile: LiveData<State<User>> = _profile
-    fun getProfile() {
+
+    private val _profilePictureResponse = MutableLiveData<State<String>>()
+    val profilePictureResponse: LiveData<State<String>> = _profilePictureResponse
+    fun getProfile(forceUpdate: Boolean = false) {
         viewModelScope.launch {
-            userRepository.getProfile().asFlow().collect {
+            userRepository.getProfile(forceUpdate).asFlow().collect {
                 _profile.value = it
+            }
+        }
+    }
+
+    fun updateProfilePicture(file: File) {
+        viewModelScope.launch {
+            userRepository.updateProfilePicture(file).asFlow().collect {
+                _profilePictureResponse.value = it
             }
         }
     }

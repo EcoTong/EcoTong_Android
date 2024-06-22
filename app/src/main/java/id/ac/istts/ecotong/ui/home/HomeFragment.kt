@@ -59,7 +59,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             commentDialog = BottomSheetDialog(requireContext(), R.style.DialogStyle)
             commentViewBinding = CommentsDialogBinding.inflate(layoutInflater)
             commentDialog.setContentView(commentViewBinding!!.root)
-            commentDialog.behavior.halfExpandedRatio = 0.5f
+            commentDialog.behavior.halfExpandedRatio = .99f
             commentDialog.behavior.isFitToContents = true
             commentDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
             commentDialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
@@ -92,7 +92,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     is State.Error -> {}
                     State.Loading -> {}
                     is State.Success -> {
-                        headerAdapter.setData(it.data.username, (it.data.credits ?: 0).toString())
+                        headerAdapter.setData(it.data.username).toString()
                     }
                 }
             }

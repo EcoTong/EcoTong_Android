@@ -10,15 +10,13 @@ import id.ac.istts.ecotong.databinding.ItemHeaderBinding
 class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
 
     private var username: String? = null
-    private var points: String? = null
 
     inner class ViewHolder(val binding: ItemHeaderBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(username: String?, points: String?) {
+        fun bind(username: String?) {
             binding.tvUser.text = username?.let {
                 binding.root.context.getString(R.string.hi_user, it)
             } ?: ""
-            binding.points.text = points.toString() ?: ""
         }
     }
 
@@ -33,7 +31,7 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(username, points)
+        holder.bind(username)
     }
 
     override fun getItemCount(): Int {
@@ -41,9 +39,8 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(username: String?, points: String?) {
+    fun setData(username: String?) {
         this.username = username
-        this.points = points
         notifyDataSetChanged()
     }
 }

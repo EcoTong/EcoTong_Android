@@ -123,7 +123,7 @@ class PostFragment : BaseFragment<FragmentPostBinding>(FragmentPostBinding::infl
                     is State.Success -> {
                         loadingOverlay.invisible()
                         requireActivity().toastLong(getString(R.string.upload_post_successful))
-                        findNavController().navigate(PostFragmentDirections.actionPostFragmentToHomeFragment())
+                        findNavController().popBackStack()
                     }
                 }
             }

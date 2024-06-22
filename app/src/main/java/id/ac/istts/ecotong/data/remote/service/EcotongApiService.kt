@@ -16,6 +16,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -92,4 +93,10 @@ interface EcotongApiService {
         @Query("time1") timeFrom: Int = 3,
         @Query("time2") timeEnd: Int = 5,
     ): AiResponse
+
+    @Multipart
+    @PUT("/api/users/profile_picture")
+    suspend fun uploadProfilePicture(
+        @Part profilePicture: MultipartBody.Part
+    ): StatusResponse
 }

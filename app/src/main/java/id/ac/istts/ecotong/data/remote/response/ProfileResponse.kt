@@ -19,18 +19,15 @@ data class ProfileResponse(
 @JsonClass(generateAdapter = true)
 data class User(
 
-    @Json(name = "credits")
-    val credits: Int? = null,
-
     @Json(name = "name")
-    val name: String? = null,
+    val name: String,
 
     @Json(name = "profile_picture")
-    val profilePicture: String? = null,
+    val profilePicture: String,
 
     @Json(name = "email")
-    val email: String? = null,
+    val email: String,
 
     @Json(name = "username")
-    val username: String? = null
+    val username: String
 )

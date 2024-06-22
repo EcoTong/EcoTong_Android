@@ -150,7 +150,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
                     is State.Success -> {
                         loadingLogin.invisible()
-                        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+//                        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
                     }
                 }
             }

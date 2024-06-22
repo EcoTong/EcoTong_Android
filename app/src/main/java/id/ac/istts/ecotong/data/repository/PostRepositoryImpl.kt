@@ -2,6 +2,7 @@ package id.ac.istts.ecotong.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import id.ac.istts.ecotong.data.local.room.PostDao
 import id.ac.istts.ecotong.data.remote.response.Comments
 import id.ac.istts.ecotong.data.remote.response.Post
 import id.ac.istts.ecotong.data.remote.service.EcotongApiService
@@ -16,7 +17,8 @@ import java.io.File
 import javax.inject.Inject
 
 class PostRepositoryImpl @Inject constructor(
-    private val ecotongApiService: EcotongApiService
+    private val ecotongApiService: EcotongApiService,
+    private val postDao: PostDao
 ) : PostRepository {
     override suspend fun addPost(
         file: File, title: String, description: String
@@ -50,13 +52,24 @@ class PostRepositoryImpl @Inject constructor(
         try {
             val response = ecotongApiService.getPosts()
             if (response.status == "success" && response.data != null) {
-                if (response.data.isEmpty()) emit(State.Empty)
-                emit(State.Success(response.data))
+                postDao.addPosts(response.data)
+                val posts = postDao.getPosts()
+                emit(State.Success(posts))
             } else {
-                emit(State.Error(response.message ?: ""))
+                val localPosts = postDao.getPosts()
+                if (localPosts.isNotEmpty()) {
+                    emit(State.Success(localPosts))
+                } else {
+                    emit(State.Empty)
+                }
             }
         } catch (e: Exception) {
-            emit(State.Error(e.message.toString()))
+            val localPosts = postDao.getPosts()
+            if (localPosts.isNotEmpty()) {
+                emit(State.Success(localPosts))
+            } else {
+                emit(State.Empty)
+            }
         }
     }
 

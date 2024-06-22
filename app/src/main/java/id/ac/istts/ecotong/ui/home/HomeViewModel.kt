@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(
 
     fun getProfile() {
         viewModelScope.launch {
-            userRepository.getProfile().asFlow().collect {
+            userRepository.getProfile(false).asFlow().collect {
                 _profile.value = it
             }
         }

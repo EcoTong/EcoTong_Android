@@ -6,6 +6,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import id.ac.istts.ecotong.BuildConfig
 import id.ac.istts.ecotong.R
 import id.ac.istts.ecotong.data.remote.response.Comments
 import id.ac.istts.ecotong.databinding.ItemCommentBinding
@@ -26,7 +29,12 @@ class CommentAdapter :
             tvContent.text = item.content
             tvCommentTimestamps.text = item.createdAt
             tvCommentTimestamps.text = getRelativeTime(item.createdAt)
-            ivAuthor.setImageDrawable(ContextCompat.getDrawable(root.context, R.drawable.account_circle))
+            Glide.with(this.root.context)
+                .load(BuildConfig.API_BASE_URL + "profilepictures/fotoprofile-${item.username}.jpg")
+                .placeholder(
+                    R.drawable.account_circle
+                ).diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true).error(R.drawable.account_circle).into(ivAuthor)
         }
     }
 

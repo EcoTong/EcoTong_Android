@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navHost =
-            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        val navController = navHost.navController
         with(binding) {
+            val navHost =
+                supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            val navController = navHost.navController
             ViewCompat.setOnApplyWindowInsetsListener(main) { v, insets ->
                 val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
                 v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -49,8 +49,7 @@ class MainActivity : AppCompatActivity() {
             navController.addOnDestinationChangedListener { controller, destination, arguments ->
                 when (destination.id) {
                     R.id.loginFragment, R.id.signUpFragment, R.id.welcomeFragment, R.id.toLoginFragment, R.id.scanResultFragment,
-                    R.id.scanFragment, R.id.postFragment, R.id.activeQuestFragment, R.id.settingsFragment, R.id.appInfoFragment,
-                    R.id.redeemPointsFragment, R.id.completedQuestFragment -> {
+                    R.id.scanFragment, R.id.postFragment, R.id.settingsFragment, R.id.appInfoFragment -> {
                         bottomNavigation.gone()
                         fragmentContainerView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                             bottomMargin = 0
@@ -70,6 +69,22 @@ class MainActivity : AppCompatActivity() {
                             }
                         })
                     }
+                }
+            }
+
+        }
+        onBackPressedDispatcher.addCallback(this) {
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            val navController = navHostFragment.navController
+            if (navController.currentDestination?.id == R.id.homeFragment
+//                || navController.currentDestination?.id == R.id.profileFragment
+//                || navController.currentDestination?.id == R.id.listeningFragment
+            ) {
+                finish()
+            } else {
+                if (!navController.popBackStack()) {
+                    finish()
                 }
             }
         }

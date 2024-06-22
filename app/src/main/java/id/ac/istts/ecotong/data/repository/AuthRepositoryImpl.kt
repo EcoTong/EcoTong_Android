@@ -7,7 +7,6 @@ import id.ac.istts.ecotong.data.remote.service.EcotongApiService
 import id.ac.istts.ecotong.util.handleError
 import kotlinx.coroutines.flow.first
 import retrofit2.HttpException
-import timber.log.Timber
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -79,6 +78,6 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override suspend fun logout() {
-        sessionManager.removeToken()
+        sessionManager.logout()
     }
 }

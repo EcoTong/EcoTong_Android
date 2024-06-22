@@ -5,8 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class StatusResponse(
-
     @Json(name = "status")
     val status: String,
-
 )

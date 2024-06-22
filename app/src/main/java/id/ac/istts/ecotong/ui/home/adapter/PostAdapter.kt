@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import id.ac.istts.ecotong.BuildConfig
 import id.ac.istts.ecotong.R
 import id.ac.istts.ecotong.data.remote.response.Post
@@ -151,10 +152,11 @@ class PostAdapter(
                     circularProgressDrawable
                 ).error(R.drawable.ic_broken_image).into(ivPost)
             Glide.with(this.root.context)
-                .load(BuildConfig.API_BASE_URL + "profilepictures/fotoprofile${item.username}.jpg")
+                .load(BuildConfig.API_BASE_URL + "profilepictures/fotoprofile-${item.username}.jpg")
                 .placeholder(
-                    circularProgressDrawable
-                ).error(R.drawable.account_circle).into(ivUser)
+                    R.drawable.account_circle
+                ).diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true).error(R.drawable.account_circle).into(ivUser)
         }
     }
 
