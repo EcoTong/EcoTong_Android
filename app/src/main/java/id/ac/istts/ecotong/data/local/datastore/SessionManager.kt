@@ -8,7 +8,6 @@ import id.ac.istts.ecotong.data.remote.response.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
-import okhttp3.internal.userAgent
 
 class SessionManager(context: Context) {
 
