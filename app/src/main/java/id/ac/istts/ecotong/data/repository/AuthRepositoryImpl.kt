@@ -3,6 +3,8 @@ package id.ac.istts.ecotong.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import id.ac.istts.ecotong.data.local.datastore.SessionManager
+import id.ac.istts.ecotong.data.local.room.PostDao
+import id.ac.istts.ecotong.data.local.room.ScanDao
 import id.ac.istts.ecotong.data.remote.service.EcotongApiService
 import id.ac.istts.ecotong.util.handleError
 import kotlinx.coroutines.flow.first
@@ -11,7 +13,9 @@ import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val ecotongApiService: EcotongApiService,
-    private val sessionManager: SessionManager
+    private val sessionManager: SessionManager,
+    private val postDao: PostDao,
+    private val scanDao: ScanDao
 ) : AuthRepository {
     override suspend fun register(
         username: String,
@@ -78,6 +82,8 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override suspend fun logout() {
+        postDao.deletePosts()
+        scanDao.deleteScans()
         sessionManager.logout()
     }
 }

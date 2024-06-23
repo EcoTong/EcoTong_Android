@@ -52,6 +52,7 @@ class PostRepositoryImpl @Inject constructor(
         try {
             val response = ecotongApiService.getPosts()
             if (response.status == "success" && response.data != null) {
+                postDao.deletePosts()
                 postDao.addPosts(response.data)
                 val posts = postDao.getPosts()
                 emit(State.Success(posts))

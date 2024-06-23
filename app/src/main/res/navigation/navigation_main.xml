@@ -79,9 +79,7 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:popUpTo="@id/navigation_main"
-            app:popUpToInclusive="true" />
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/scanFragment"
@@ -149,7 +147,11 @@
     </fragment>
     <fragment
         android:id="@+id/detailQuestFragment"
-        android:name="id.ac.istts.ecotong.ui.detailquest.DetailQuestFragment"
+        android:name="id.ac.istts.ecotong.ui.detailHistory.DetailHistoryFragment"
         android:label="fragment_detail_quest"
-        tools:layout="@layout/fragment_detail_quest" />
+        tools:layout="@layout/fragment_detail_history">
+        <argument
+            android:name="material"
+            app:argType="string" />
+    </fragment>
 </navigation>

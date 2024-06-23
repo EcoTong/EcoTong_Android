@@ -3,15 +3,17 @@
     <item android:id="@+id/homeFragment"
         android:title="Home"
         android:icon="@drawable/home"/>
-    <item android:id="@+id/searchFragment"
-        android:title="Search"
-        android:icon="@drawable/search"/>
+    <item
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/history"
+        android:title="History" />
     <item android:id="@+id/scanFragment"
         android:title="Scan"
         android:icon="@drawable/scan"/>
-    <item android:id="@+id/historyFragment"
-        android:title="History"
-        android:icon="@drawable/history"/>
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/bookmark_saved_icon"
+        android:title="Saved" />
     <item android:id="@+id/profileFragment"
         android:title="Profile"
         android:icon="@drawable/profile"/>

@@ -10,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import id.ac.istts.ecotong.data.local.datastore.SessionManager
 import id.ac.istts.ecotong.data.local.room.EcotongDatabase
 import id.ac.istts.ecotong.data.local.room.PostDao
+import id.ac.istts.ecotong.data.local.room.ScanDao
 import javax.inject.Singleton
 
 @Module
@@ -31,5 +32,10 @@ object LocalModule {
     @Provides
     fun providePostDao(database: EcotongDatabase): PostDao {
         return database.postDao()
+    }
+
+    @Provides
+    fun provideScanDao(database: EcotongDatabase): ScanDao {
+        return database.scanDao()
     }
 }

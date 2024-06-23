@@ -15,6 +15,4 @@ interface PostDao {
 
     @Query("DELETE FROM posts")
     suspend fun deletePosts()
-
-
 }

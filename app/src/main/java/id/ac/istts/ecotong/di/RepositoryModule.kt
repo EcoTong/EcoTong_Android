@@ -10,6 +10,8 @@ import id.ac.istts.ecotong.data.repository.MLRepository
 import id.ac.istts.ecotong.data.repository.MLRepositoryImpl
 import id.ac.istts.ecotong.data.repository.PostRepository
 import id.ac.istts.ecotong.data.repository.PostRepositoryImpl
+import id.ac.istts.ecotong.data.repository.ScanRepository
+import id.ac.istts.ecotong.data.repository.ScanRepositoryImpl
 import id.ac.istts.ecotong.data.repository.UserRepository
 import id.ac.istts.ecotong.data.repository.UserRepositoryImpl
 
@@ -27,4 +29,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindMLRepository(mlRepositoryImpl: MLRepositoryImpl): MLRepository
+
+    @Binds
+    abstract fun bindScanRepository(scanRepositoryImpl: ScanRepositoryImpl): ScanRepository
 }

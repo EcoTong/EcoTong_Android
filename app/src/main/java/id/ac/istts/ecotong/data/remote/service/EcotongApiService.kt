@@ -4,6 +4,7 @@ import id.ac.istts.ecotong.data.remote.response.AiResponse
 import id.ac.istts.ecotong.data.remote.response.AuthResponse
 import id.ac.istts.ecotong.data.remote.response.DetailPostResponse
 import id.ac.istts.ecotong.data.remote.response.GetPostsResponse
+import id.ac.istts.ecotong.data.remote.response.HistoryResponse
 import id.ac.istts.ecotong.data.remote.response.PostResponse
 import id.ac.istts.ecotong.data.remote.response.ProfileResponse
 import id.ac.istts.ecotong.data.remote.response.StatusResponse
@@ -99,4 +100,7 @@ interface EcotongApiService {
     suspend fun uploadProfilePicture(
         @Part profilePicture: MultipartBody.Part
     ): StatusResponse
+
+    @GET("/api/ai/history")
+    suspend fun getHistory(): HistoryResponse
 }
