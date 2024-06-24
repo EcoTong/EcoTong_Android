@@ -5,6 +5,7 @@ import androidx.lifecycle.liveData
 import id.ac.istts.ecotong.data.local.room.PostDao
 import id.ac.istts.ecotong.data.remote.response.Comments
 import id.ac.istts.ecotong.data.remote.response.Post
+import id.ac.istts.ecotong.data.remote.response.SavedPost
 import id.ac.istts.ecotong.data.remote.service.EcotongApiService
 import id.ac.istts.ecotong.util.handleError
 import okhttp3.MediaType.Companion.toMediaType
@@ -71,6 +72,24 @@ class PostRepositoryImpl @Inject constructor(
             } else {
                 emit(State.Empty)
             }
+        }
+    }
+
+    override suspend fun getSavedPosts(): LiveData<State<List<SavedPost>>> = liveData {
+        emit(State.Loading)
+        try {
+            val response = ecotongApiService.getBookmark()
+            if (response.status == "success" && response.data != null) {
+                if (response.data.isNotEmpty()) {
+                    emit(State.Success(response.data))
+                } else {
+                    emit(State.Empty)
+                }
+            } else {
+                emit(State.Error(response.message ?: ""))
+            }
+        } catch (e: Exception) {
+            emit(State.Error(e.message.toString()))
         }
     }
 

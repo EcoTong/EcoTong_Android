@@ -3,6 +3,7 @@ package id.ac.istts.ecotong.data.repository
 import androidx.lifecycle.LiveData
 import id.ac.istts.ecotong.data.remote.response.Comments
 import id.ac.istts.ecotong.data.remote.response.Post
+import id.ac.istts.ecotong.data.remote.response.SavedPost
 import kotlinx.coroutines.flow.Flow
 import java.io.File
 
@@ -19,4 +20,5 @@ interface PostRepository {
     suspend fun bookmarkPost(id: String)
     suspend fun unbookmarkPost(id: String)
     suspend fun generateAi(madeFrom: String): LiveData<State<String>>
+    suspend fun getSavedPosts(): LiveData<State<List<SavedPost>>>
 }

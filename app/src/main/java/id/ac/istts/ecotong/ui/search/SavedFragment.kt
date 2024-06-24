@@ -1,11 +1,9 @@
-package id.ac.istts.ecotong.ui.home
+package id.ac.istts.ecotong.ui.search
 
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -13,111 +11,81 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.ac.istts.ecotong.R
 import id.ac.istts.ecotong.data.repository.State
 import id.ac.istts.ecotong.databinding.CommentsDialogBinding
-import id.ac.istts.ecotong.databinding.FragmentHomeBinding
+import id.ac.istts.ecotong.databinding.FragmentSavedBinding
 import id.ac.istts.ecotong.ui.base.BaseFragment
 import id.ac.istts.ecotong.ui.home.adapter.CommentAdapter
-import id.ac.istts.ecotong.ui.home.adapter.HeaderAdapter
-import id.ac.istts.ecotong.ui.home.adapter.PostAdapter
 import id.ac.istts.ecotong.util.gone
 import id.ac.istts.ecotong.util.invisible
 import id.ac.istts.ecotong.util.toastLong
 import id.ac.istts.ecotong.util.visible
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
-    private val viewModel: HomeViewModel by viewModels()
-    private lateinit var postAdapter: PostAdapter
-    private lateinit var commentAdapter: CommentAdapter
-    private lateinit var headerAdapter: HeaderAdapter
+class SavedFragment : BaseFragment<FragmentSavedBinding>(FragmentSavedBinding::inflate) {
     private lateinit var commentDialog: BottomSheetDialog
     private var commentViewBinding: CommentsDialogBinding? = null
+    private lateinit var commentAdapter: CommentAdapter
+    private val viewModel: SavedViewModel by viewModels()
+    private lateinit var postAdapter: SavedPostAdapter
     override fun initData() {
-        viewModel.getPosts()
-        viewModel.getProfile()
+        viewModel.getSavedPosts()
     }
 
     override fun setupUI() {
-        with(binding) {
-            postAdapter = PostAdapter(
-                ::showComments,
-                ::likePost,
-                ::unlikePost,
-                ::bookmarkPost,
-                ::unbookmarkPost
-            )
-            headerAdapter = HeaderAdapter()
-            rvPost.layoutManager = LinearLayoutManager(context)
-            val concatAdapter = ConcatAdapter(headerAdapter, postAdapter)
-            rvPost.adapter = concatAdapter
-            commentDialog = BottomSheetDialog(requireContext(), R.style.DialogStyle)
-            commentViewBinding = CommentsDialogBinding.inflate(layoutInflater)
-            commentDialog.setContentView(commentViewBinding!!.root)
-            commentDialog.behavior.halfExpandedRatio = .99f
-            commentDialog.behavior.isFitToContents = true
-            commentDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-            commentDialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-            commentViewBinding!!.rvComments.layoutManager = LinearLayoutManager(context)
-            commentAdapter = CommentAdapter()
-            commentViewBinding?.rvComments?.adapter = commentAdapter
-            commentDialog.setOnDismissListener {
-                commentViewBinding?.editTextText?.text?.clear()
-            }
+        postAdapter = SavedPostAdapter(
+            ::showComments,
+            ::likePost,
+            ::unlikePost,
+            ::bookmarkPost,
+            ::unbookmarkPost
+        )
+        binding.rvSaved.layoutManager = LinearLayoutManager(context)
+        binding.rvSaved.adapter = postAdapter
+        commentDialog = BottomSheetDialog(requireContext(), R.style.DialogStyle)
+        commentViewBinding = CommentsDialogBinding.inflate(layoutInflater)
+        commentDialog.setContentView(commentViewBinding!!.root)
+        commentDialog.behavior.halfExpandedRatio = .99f
+        commentDialog.behavior.isFitToContents = true
+        commentDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        commentDialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+        commentViewBinding?.rvComments?.layoutManager = LinearLayoutManager(context)
+        commentAdapter = CommentAdapter()
+        commentViewBinding?.rvComments?.adapter = commentAdapter
+        commentDialog.setOnDismissListener {
+            commentViewBinding?.editTextText?.text?.clear()
         }
     }
 
     override fun setupListeners() {
-        with(binding) {
-            fabPost.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPostFragment())
-            }
-            swipeRefreshLayout.setOnRefreshListener {
-                viewModel.getPosts()
-                swipeRefreshLayout.isRefreshing = false
-            }
-        }
+
     }
 
     override fun setupObservers() {
         with(binding) {
-            viewModel.profile.observe(viewLifecycleOwner) {
-                when (it) {
-                    State.Empty -> {}
-                    is State.Error -> {}
-                    State.Loading -> {}
-                    is State.Success -> {
-                        headerAdapter.setData(it.data.username).toString()
-                    }
-                }
-            }
             viewModel.posts.observe(viewLifecycleOwner) {
                 when (it) {
                     State.Empty -> {
-                        loadingPosts.gone()
-                        rvPost.gone()
-                        layoutError.gone()
+                        progressBar2.gone()
+                        rvSaved.gone()
                         tvEmptyPost.visible()
                     }
 
                     is State.Error -> {
-                        loadingPosts.gone()
+                        progressBar2.gone()
                         tvEmptyPost.gone()
-                        rvPost.gone()
-                        layoutError.visible()
+                        rvSaved.gone()
                         requireActivity().toastLong(it.error)
                     }
 
                     State.Loading -> {
                         tvEmptyPost.gone()
-                        rvPost.gone()
-                        layoutError.gone()
-                        loadingPosts.visible()
+                        rvSaved.gone()
+                        progressBar2.visible()
                     }
 
                     is State.Success -> {
-                        loadingPosts.gone()
+                        progressBar2.gone()
                         tvEmptyPost.gone()
-                        layoutError.gone()
-                        rvPost.visible()
+                        rvSaved.visible()
                         postAdapter.submitList(it.data)
                     }
                 }
@@ -145,6 +113,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 }
             }
         }
+
     }
 
     private fun showComments(id: String) {
@@ -153,10 +122,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         commentViewBinding?.send?.setOnClickListener {
             val content = commentViewBinding?.editTextText?.text.toString()
             if (content.isNotEmpty()) {
-                addComment(id, content)
+                viewModel.addComment(content, id)
                 commentViewBinding?.editTextText?.text?.clear()
                 val inputMethodManager =
-                    getSystemService(
+                    ContextCompat.getSystemService(
                         requireContext(),
                         InputMethodManager::class.java
                     ) as InputMethodManager
@@ -170,10 +139,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         commentDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         commentDialog.show()
         commentViewBinding?.editTextText?.requestFocus()
-    }
-
-    private fun addComment(id: String, content: String) {
-        viewModel.addComment(content = content, id = id)
     }
 
     private fun likePost(id: String) {
@@ -191,4 +156,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private fun unbookmarkPost(id: String) {
         viewModel.unbookmarkPost(id)
     }
+
 }

@@ -4,6 +4,7 @@ import id.ac.istts.ecotong.data.remote.response.AiResponse
 import id.ac.istts.ecotong.data.remote.response.AuthResponse
 import id.ac.istts.ecotong.data.remote.response.DetailPostResponse
 import id.ac.istts.ecotong.data.remote.response.GetPostsResponse
+import id.ac.istts.ecotong.data.remote.response.GetSavedPostsResponse
 import id.ac.istts.ecotong.data.remote.response.HistoryResponse
 import id.ac.istts.ecotong.data.remote.response.PostResponse
 import id.ac.istts.ecotong.data.remote.response.ProfileResponse
@@ -73,7 +74,7 @@ interface EcotongApiService {
         @Path("id_post") postId: String,
     ): StatusResponse
 
-    @DELETE("/api/posts/unlike/{id_post}")
+    @DELETE("/api/posts/unbookmark/{id_post}")
     suspend fun unbookmarkPost(
         @Path("id_post") postId: String,
     ): StatusResponse
@@ -103,4 +104,7 @@ interface EcotongApiService {
 
     @GET("/api/ai/history")
     suspend fun getHistory(): HistoryResponse
+
+    @GET("/api/posts/bookmark")
+    suspend fun getBookmark(): GetSavedPostsResponse
 }
